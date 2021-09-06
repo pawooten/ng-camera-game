@@ -41,3 +41,7 @@ html, body {
     right: 20px;
     z-index: 2;
 }
+
+.hidden {
+    display:none;
+}
