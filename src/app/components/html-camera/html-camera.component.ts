@@ -1,11 +1,11 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { CameraSettings } from '../../cameraSettings';
 @Component({
-  selector: 'ng-camera-game-html-camera-component',
-  templateUrl: './html-camera-component.component.html',
-  styleUrls: ['./html-camera-component.component.css']
+  selector: 'app-html-camera',
+  templateUrl: './html-camera.component.html',
+  styleUrls: ['./html-camera.component.css']
 })
-export class HtmlCameraComponentComponent implements OnInit {
+export class HtmlCameraComponent implements OnInit {
 
   @ViewChild('cameraView') cameraView!: ElementRef<HTMLVideoElement>;
   @ViewChild('cameraSensor') cameraSensor!: ElementRef<HTMLCanvasElement>;
