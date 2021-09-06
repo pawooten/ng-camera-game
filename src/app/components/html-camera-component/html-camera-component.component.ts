@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { CameraSettings } from '../cameraSettings';
+import { CameraSettings } from '../../cameraSettings';
 @Component({
   selector: 'ng-camera-game-html-camera-component',
   templateUrl: './html-camera-component.component.html',
