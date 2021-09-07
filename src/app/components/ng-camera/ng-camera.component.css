@@ -25,6 +25,9 @@ button{
     bottom: 30px;
     left: calc(50% - 100px);
 }
+img{
+    width:64px;
+}
 .taken{
     height: 100px!important;
     width: 100px!important;
