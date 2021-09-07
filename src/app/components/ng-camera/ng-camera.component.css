@@ -12,21 +12,17 @@
     display:none;
 }
 button{
-    width: 200px;
-    background-color: purple;
-    color: white;
-    font-size: 16px;
-    border-radius: 30px;
-    border: none;
     padding: 15px 20px;
-    text-align: center;
     box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2);
     position: fixed;
     bottom: 30px;
-    left: calc(50% - 100px);
+    left: calc(50% - 56px);
 }
-img{
-    width:64px;
+.buttonImg{
+    width:32px;
+    position:relative;
+    top:-17px;
+    left:-7px;
 }
 .taken{
     height: 100px!important;
