@@ -1,0 +1,13 @@
+.fullScreen {
+    position:fixed;
+    height:100%;
+    width:100%;
+    object-fit:cover;
+}
+.mirrored {
+    transform: scaleX(-1);
+    filter: FlipH;
+}
+.hidden {
+    display:none;
+}
