@@ -2,7 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { CameraSettings } from 'src/app/cameraSettings';
 
 @Component({
-  selector: 'ng-camera',
+  selector: 'app-ng-camera',
   templateUrl: './ng-camera.component.html',
   styleUrls: ['./ng-camera.component.css']
 })
@@ -23,6 +23,7 @@ export class NgCameraComponent implements OnInit {
   }
 
   onButtonClicked() : void {
+
     this.cameraSensor.nativeElement.width = this.cameraView.nativeElement.videoWidth;
     this.cameraSensor.nativeElement.height = this.cameraView.nativeElement.videoHeight;
 
@@ -32,6 +33,6 @@ export class NgCameraComponent implements OnInit {
       renderingContext.drawImage(this.cameraView.nativeElement, 0, 0);
     }
     this.cameraOutput.nativeElement.src = this.cameraSensor.nativeElement.toDataURL("image/webp");
-    this.cameraOutput.nativeElement.classList.add("taken");
+    this.cameraOutput.nativeElement.classList.add("pic");
   }
 }
