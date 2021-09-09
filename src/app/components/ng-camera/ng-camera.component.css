@@ -34,3 +34,11 @@ button{
     right: 20px;
     z-index: 2;
 }
+.camera-view-finder {
+    width: 100px;
+    height:60px;
+    position:absolute;
+    left: calc(50% - 100px);
+    top: calc(50% - 30px);
+    border: 2px solid black;
+}

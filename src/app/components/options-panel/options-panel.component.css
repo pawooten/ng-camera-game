@@ -1,0 +1,13 @@
+div {
+    background-color: lavender;
+    width:200px;
+    position:absolute;
+    left: calc(50% - 65px);
+}
+ul {
+    list-style: none;
+}
+canvas {
+    width: 30px;
+    height: 30px;
+}

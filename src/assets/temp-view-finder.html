@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style type="text/css">
+        div {
+            position: absolute;            
+        }
+            .view-finder-main-rectangle {
+                width:100px;
+                height:60px;
+                border: 2px solid black;
+                left: calc(50% - 50px);
+                top: calc(50% - 30px);
+            }
+            .view-finder-hide-rectangle-vertical {
+                width: 60px;
+                height: 100px;
+                background-color: green;
+                left: calc(50% - 30px);
+                top: calc(50% - 50px);
+            }
+            .view-finder-hide-rectangle-horizontal {
+                width: 140px;
+                height: 30px;
+                
+                left: calc(50% - 70px);
+                top: calc(50% - 12px);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="view-finder-main-rectangle"></div>
+        <div class="view-finder-hide-rectangle-vertical"></div>
+        <div class="view-finder-hide-rectangle-horizontal"></div>
+    </body>
+</html>
