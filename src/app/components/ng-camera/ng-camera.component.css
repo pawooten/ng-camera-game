@@ -40,5 +40,5 @@ button{
     position:absolute;
     left: calc(50% - 100px);
     top: calc(50% - 30px);
-    border: 2px solid black;
+    border: 2px solid var(--accent-color);
 }
