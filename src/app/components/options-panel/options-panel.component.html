@@ -4,12 +4,12 @@
     <br/>
     <span class="mat-slider-label">Pics per Round</span>
     <span>
-        <ul *ngFor="let picColor of picColors">
+        <ul *ngFor="let picColorState of picColorStatesByColor | keyvalue">
             <li>
-                <mat-slide-toggle [color]="primaryThemeColor" [checked]="isChecked(picColor.Value)"></mat-slide-toggle>
+                <mat-slide-toggle [color]="primaryThemeColor" [checked]="isChecked(picColorStatesByColor[picColorState.key].Value)"></mat-slide-toggle>
                 <span>
-                    <canvas [ngStyle]="{'background-color': picColor.Value}"></canvas>
-                    <span class="colorLabelSpan">{{picColor.Label}}</span>
+                    <canvas [ngStyle]="{'background-color': picColorStatesByColor[picColorState.key].Value}"></canvas>
+                    <span class="colorLabelSpan">{{picColorStatesByColor[picColorState.key].Label}}</span>
                 </span>
             </li>
         </ul>
