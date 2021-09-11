@@ -4,9 +4,9 @@
     <br/>
     <span class="mat-slider-label">Pics per Round</span>
     <span>
-        <ul>
-            <li><mat-slide-toggle [color]="color"></mat-slide-toggle><span><canvas style="background-color: red;"></canvas><span class="colorLabelSpan">Red</span></span></li>
-            <li><mat-slide-toggle [color]="color"></mat-slide-toggle><span><canvas style="background-color: green;"></canvas><span class="colorLabelSpan">Green</span></span></li>
+        <ul *ngFor="let picColor of picColors">
+            <li><mat-slide-toggle [color]="primaryThemeColor" [checked]="isChecked(picColor.Value)"></mat-slide-toggle><span><canvas [ngStyle]="{'background-color': picColor.Value}"></canvas><span class="colorLabelSpan">{{picColor.Label}}</span></span></li>
+            <!-- <li><mat-slide-toggle [color]="color"></mat-slide-toggle><span><canvas style="background-color: green;"></canvas><span class="colorLabelSpan">Green</span></span></li>
             <li><mat-slide-toggle [color]="color"></mat-slide-toggle><span><canvas style="background-color: blue;"></canvas><span class="colorLabelSpan">Blue</span></span></li>
             <li><mat-slide-toggle [color]="color"></mat-slide-toggle><span><canvas style="background-color: yellow;"></canvas><span class="colorLabelSpan">Yellow</span></span></li>
             <li><mat-slide-toggle [color]="color"></mat-slide-toggle><span><canvas style="background-color: orange;"></canvas><span class="colorLabelSpan">Orange</span></span></li>
@@ -14,7 +14,7 @@
             <li><mat-slide-toggle [color]="color"></mat-slide-toggle><span><canvas style="background-color: white;"></canvas><span class="colorLabelSpan">White</span></span></li>
             <li><mat-slide-toggle [color]="color"></mat-slide-toggle><span><canvas style="background-color: brown;"></canvas><span class="colorLabelSpan">Brown</span></span></li>
             <li><mat-slide-toggle [color]="color"></mat-slide-toggle><span><canvas style="background-color: black;"></canvas><span class="colorLabelSpan">Black</span></span></li>
-            <li><mat-slide-toggle [color]="color"></mat-slide-toggle><span><canvas style="background-color: purple;"></canvas><span class="colorLabelSpan">Purple</span></span></li>
+            <li><mat-slide-toggle [color]="color"></mat-slide-toggle><span><canvas style="background-color: purple;"></canvas><span class="colorLabelSpan">Purple</span></span></li> -->
         </ul>
     </span>
 </div> 
