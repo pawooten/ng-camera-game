@@ -9,6 +9,7 @@ import { HtmlCameraComponent } from './components/html-camera/html-camera.compon
 import { NgCameraComponent } from './components/ng-camera/ng-camera.component';
 import { OptionsPanelComponent } from './components/options-panel/options-panel.component';
 import { ScoreboardComponent } from './components/scoreboard/scoreboard.component';
+import { PicColorCanvasComponent } from './components/pic-color-canvas/pic-color-canvas.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ScoreboardComponent } from './components/scoreboard/scoreboard.componen
     HtmlCameraComponent,
     NgCameraComponent,
     OptionsPanelComponent,
-    ScoreboardComponent
+    ScoreboardComponent,
+    PicColorCanvasComponent
   ],
   imports: [
     BrowserModule,
