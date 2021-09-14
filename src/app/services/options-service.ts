@@ -5,7 +5,7 @@ import { PicColorState } from '../interfaces/PicColorState';
 @Injectable({
   providedIn: 'root'
 })
-export class UserPreferenceService {
+export class OptionsService {
 
     readonly picColorStates = [  { Label: 'Red', Value: 'red', Enabled: true },
     { Label: 'Green', Value: 'green', Enabled: true },

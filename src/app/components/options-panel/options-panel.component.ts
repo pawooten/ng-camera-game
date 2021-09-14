@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserPreferenceService } from 'src/app/services/options-service';
+import { OptionsService } from 'src/app/services/options-service';
 import {ThemePalette} from '@angular/material/core';
 import { PicColorState } from 'src/app/interfaces/PicColorState';
 
@@ -13,11 +13,11 @@ export class OptionsPanelComponent implements OnInit {
 
   readonly picColorStatesByColor: { [color:string]: PicColorState} = {};
 
-  constructor(private userPreferenceService: UserPreferenceService) {
+  constructor(private optionsService: OptionsService) {
   }
 
   ngOnInit(): void {
-    this.userPreferenceService.getPicColorStates().forEach( picColorState => {
+    this.optionsService.getPicColorStates().forEach( picColorState => {
       this.picColorStatesByColor[picColorState.Value] = picColorState;
     });
   }
