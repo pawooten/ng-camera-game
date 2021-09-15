@@ -8,8 +8,7 @@
             <li>
                 <mat-slide-toggle [color]="primaryThemeColor" [checked]="isChecked(picColorStatesByColor[picColorState.key].Value)"></mat-slide-toggle>
                 <span>
-                    <canvas [ngStyle]="{'background-color': picColorStatesByColor[picColorState.key].Value}"></canvas>
-                    <span class="colorLabelSpan">{{picColorStatesByColor[picColorState.key].Label}}</span>
+                    <app-pic-color-canvas [(PicColor)]="picColorStatesByColor[picColorState.key]"></app-pic-color-canvas>
                 </span>
             </li>
         </ul>

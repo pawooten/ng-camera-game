@@ -12,12 +12,13 @@ export class OptionsPanelComponent implements OnInit {
   primaryThemeColor: ThemePalette = 'primary';
 
   readonly picColorStatesByColor: { [color:string]: PicColorState} = {};
-
+  picColors: PicColorState[] = [];
   constructor(private optionsService: OptionsService) {
   }
 
   ngOnInit(): void {
-    this.optionsService.getPicColorStates().forEach( picColorState => {
+    this.picColors = this.optionsService.getPicColorStates();
+    this.picColors.forEach( picColorState => {
       this.picColorStatesByColor[picColorState.Value] = picColorState;
     });
   }
