@@ -22,8 +22,4 @@ export class OptionsPanelComponent implements OnInit {
       this.picColorStatesByColor[picColorState.Value] = picColorState;
     });
   }
-
-  isChecked(color: string): boolean {
-    return this.picColorStatesByColor[color].Enabled;
-  }
 }
