@@ -27,6 +27,11 @@ h3 {
     position: absolute;
     left:60px;
 }
+.colorColumn > * {
+    position: relative;
+    top:-18px;
+    left: -30px;
+}
 .scoreColumn {
     position: absolute;
     right:10px;

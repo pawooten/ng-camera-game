@@ -1,11 +1,11 @@
 <div class="outerDiv">
     <h3>Scoreboard</h3>
-    <mat-grid-list cols="3" row="2:1" rowHeight="50px" gutterSize="5px">
+    <mat-grid-list cols="3" row="2:1" rowHeight="80px" gutterSize="5px">
         <mat-grid-tile *ngFor="let picAssignment of picAssignments" colspan="3">
           <!-- <mat-icon matListIcon>folder</mat-icon> -->
           <div class="rowDiv">
             <span class="picNumberColumn">{{picAssignment.PicNumber}}</span>
-            <span class="colorColumn">{{picAssignment.Color.Label}}</span>
+            <span class="colorColumn"><app-pic-color-canvas></app-pic-color-canvas></span>
             <span class="scoreColumn">{{picAssignment.Score}}</span>
           </div>
         </mat-grid-tile>
