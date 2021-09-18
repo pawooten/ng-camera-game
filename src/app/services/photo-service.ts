@@ -1,17 +1,19 @@
 import { Injectable } from '@angular/core';
-// import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PhotoService {
-    lastPhoto? : HTMLImageElement;
-
+    Photos$ : Observable<string>;
+    private photos: BehaviorSubject<string>;
     constructor() {
+        this.photos = new BehaviorSubject<string>('');
+        this.Photos$ = this.photos.asObservable();
     }
 
-    processPhoto(photoImage: HTMLImageElement) : boolean {
-        this.lastPhoto = photoImage;
+    processPhoto(imageURL: string) : boolean {
+        this.photos.next(imageURL);
         return true;
     }
 }

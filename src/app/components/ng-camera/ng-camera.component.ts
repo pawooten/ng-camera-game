@@ -33,8 +33,9 @@ export class NgCameraComponent implements OnInit {
     {
       renderingContext.drawImage(this.cameraView.nativeElement, 0, 0);
     }
-    this.cameraOutput.nativeElement.src = this.cameraSensor.nativeElement.toDataURL("image/webp");
+    const imageURL = this.cameraSensor.nativeElement.toDataURL("image/webp");
+    this.cameraOutput.nativeElement.src = imageURL;
     this.cameraOutput.nativeElement.classList.add("pic");
-    this.photoService.processPhoto(this.cameraOutput.nativeElement);
+    this.photoService.processPhoto(imageURL);
   }
 }

@@ -12,6 +12,7 @@ import { OptionsPanelComponent } from './components/options-panel/options-panel.
 import { ScoreboardComponent } from './components/scoreboard/scoreboard.component';
 import { PicColorCanvasComponent } from './components/pic-color-canvas/pic-color-canvas.component';
 import { TitleComponent } from './components/title/title.component';
+import { PhotoReelComponent } from './components/photo-reel/photo-reel.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { TitleComponent } from './components/title/title.component';
     OptionsPanelComponent,
     ScoreboardComponent,
     PicColorCanvasComponent,
-    TitleComponent
+    TitleComponent,
+    PhotoReelComponent
   ],
   imports: [
     BrowserModule,
