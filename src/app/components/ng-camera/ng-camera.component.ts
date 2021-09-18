@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { CameraSettings } from 'src/app/cameraSettings';
+import { PhotoService } from 'src/app/services/photo-service';
 
 @Component({
   selector: 'app-ng-camera',
@@ -12,7 +13,7 @@ export class NgCameraComponent implements OnInit {
   @ViewChild('cameraSensor') cameraSensor!: ElementRef<HTMLCanvasElement>;
   @ViewChild('cameraOutput') cameraOutput!: ElementRef<HTMLImageElement>;
 
-  constructor() { }
+  constructor(private photoService: PhotoService) { }
 
   ngOnInit(): void {
     navigator.mediaDevices.getUserMedia(CameraSettings)
@@ -34,5 +35,6 @@ export class NgCameraComponent implements OnInit {
     }
     this.cameraOutput.nativeElement.src = this.cameraSensor.nativeElement.toDataURL("image/webp");
     this.cameraOutput.nativeElement.classList.add("pic");
+    this.photoService.processPhoto(this.cameraOutput.nativeElement);
   }
 }
