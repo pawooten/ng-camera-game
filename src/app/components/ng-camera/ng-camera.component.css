@@ -42,3 +42,9 @@ button{
     top: calc(50% - 30px);
     border: 2px solid var(--accent-color);
 }
+app-photo-reel {
+    position: relative;
+    right:0px;
+    width:300px;
+    background-color: gray;
+}

@@ -1,4 +1,9 @@
-<!-- <app-html-camera></app-html-camera>> -->
-<!-- <app-ng-camera> -->
-    <app-options-panel></app-options-panel>
-    <!-- <app-scoreboard></app-scoreboard> -->
+<nav>
+  <a routerLink="/" routerLinkActive="active">Title</a>
+  <a routerLink="/options" routerLinkActive="active">Options</a>
+  <a routerLink="/scoreboard" routerLinkActive="active">Scoreboard</a>
+  <a routerLink="/camera" routerLinkActive="active">Camera</a>
+</nav>
+<div>
+  <router-outlet></router-outlet>
+</div>
