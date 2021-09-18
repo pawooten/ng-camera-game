@@ -11,7 +11,7 @@ import { NgCameraComponent } from './components/ng-camera/ng-camera.component';
 import { OptionsPanelComponent } from './components/options-panel/options-panel.component';
 import { ScoreboardComponent } from './components/scoreboard/scoreboard.component';
 import { PicColorCanvasComponent } from './components/pic-color-canvas/pic-color-canvas.component';
-import { TitleComponent } from './title/title.component';
+import { TitleComponent } from './components/title/title.component';
 
 @NgModule({
   declarations: [
