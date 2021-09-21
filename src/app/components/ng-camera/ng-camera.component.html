@@ -1,7 +1,6 @@
 <main class="fullScreen">
-    <video id="camera--view" #cameraView class="fullScreen mirrored" autoplay playsinline></video>
-    <canvas id="camera--sensor" #cameraSensor class="fullScreen mirrored hidden" ></canvas>
-    <img id="camera--output" #cameraOutput class="fullScreen mirrored" alt="" src="//:0">
+    <video #cameraView class="fullScreen mirrored" autoplay playsinline></video>
+    <canvas #cameraSensor class="fullScreen mirrored hidden" ></canvas>
     <button mat-fab (click)="onButtonClicked()">
         <img src="../../../assets/camera-icon.png" class="buttonImg" alt="Take a picture">
     </button>
