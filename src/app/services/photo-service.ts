@@ -9,15 +9,15 @@ export class PhotoService {
 
     Photos$ : Observable<PicSet>;
 
-    private emptyPicSet: PicSet = { Pics: [] };
+    private picSet: PicSet = { Pics: [] };
     private photos: BehaviorSubject<PicSet>;
 
     constructor() {
-        this.photos = new BehaviorSubject<PicSet>(this.emptyPicSet);
+        this.photos = new BehaviorSubject<PicSet>(this.picSet);
         this.Photos$ = this.photos.asObservable();
     }
 
     processPhoto(imageURL: string) : void {
-        this.emptyPicSet.Pics.push(imageURL);
+        this.picSet.Pics.push(imageURL);
     }
 }
