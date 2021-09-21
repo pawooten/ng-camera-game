@@ -1,5 +1,5 @@
-<ul *ngFor="let photoImageURL of photoImageURLs$ | async">
-    <li>
+<ul>
+    <li *ngFor="let photoImageURL of photoImageURLs$ | async">
         <img src={{photoImageURL}} />
     </li>
 </ul>

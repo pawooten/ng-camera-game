@@ -7,17 +7,18 @@ import { PicSet } from '../interfaces/PicSet';
 })
 export class PhotoService {
 
-    Photos$ : Observable<PicSet>;
+    PicSet$ : Observable<PicSet>;
 
     private picSet: PicSet = { Pics: [] };
-    private photos: BehaviorSubject<PicSet>;
+    private picSetBehaviorSubject: BehaviorSubject<PicSet>;
 
     constructor() {
-        this.photos = new BehaviorSubject<PicSet>(this.picSet);
-        this.Photos$ = this.photos.asObservable();
+        this.picSetBehaviorSubject = new BehaviorSubject<PicSet>(this.picSet);
+        this.PicSet$ = this.picSetBehaviorSubject.asObservable();
     }
 
     processPhoto(imageURL: string) : void {
         this.picSet.Pics.push(imageURL);
+        this.picSetBehaviorSubject.next(this.picSet);
     }
 }

@@ -13,7 +13,7 @@ export class PhotoReelComponent implements OnInit {
   photoImageURLs$ : Observable<string[]>;
   constructor(private photoService: PhotoService) {
     this.photoImageURLs$ = this.photoImageURLsBehaviorSubject.asObservable();
-    this.photoService.Photos$.subscribe( newPicSet => {
+    this.photoService.PicSet$.subscribe( newPicSet => {
       this.photoImageURLsBehaviorSubject.next(newPicSet.Pics);
     });
   }

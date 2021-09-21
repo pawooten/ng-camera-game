@@ -1,5 +1,13 @@
 ul {
     list-style-type: none;
+    border: 2px solid rebeccapurple;
+    white-space: nowrap;
+    background-color: rebeccapurple;
+    overflow:auto;
+}
+li {
+    display: inline-block;
+    margin-right: 2px;
 }
 img {
     width:128px;
