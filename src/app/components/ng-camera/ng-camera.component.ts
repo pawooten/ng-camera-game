@@ -9,8 +9,8 @@ import { PhotoService } from 'src/app/services/photo-service';
 })
 export class NgCameraComponent implements OnInit {
 
-  @ViewChild('cameraView') cameraView!: ElementRef<HTMLVideoElement>;
-  @ViewChild('cameraSensor') cameraSensor!: ElementRef<HTMLCanvasElement>;
+  @ViewChild('cameraVideo') cameraVideo!: ElementRef<HTMLVideoElement>;
+  @ViewChild('cameraCanvas') cameraCanvas!: ElementRef<HTMLCanvasElement>;
 
   constructor(private photoService: PhotoService) { }
 
@@ -18,21 +18,21 @@ export class NgCameraComponent implements OnInit {
     navigator.mediaDevices.getUserMedia(CameraSettings)
       .then( stream => {
         var track = stream.getTracks()[0];
-        this.cameraView.nativeElement.srcObject = stream;
+        this.cameraVideo.nativeElement.srcObject = stream;
       })
   }
 
   onButtonClicked() : void {
 
-    this.cameraSensor.nativeElement.width = this.cameraView.nativeElement.videoWidth;
-    this.cameraSensor.nativeElement.height = this.cameraView.nativeElement.videoHeight;
+    this.cameraCanvas.nativeElement.width = this.cameraVideo.nativeElement.videoWidth;
+    this.cameraCanvas.nativeElement.height = this.cameraVideo.nativeElement.videoHeight;
 
-    let renderingContext = this.cameraSensor.nativeElement.getContext("2d");
+    let renderingContext = this.cameraCanvas.nativeElement.getContext("2d");
     if (renderingContext)
     {
-      renderingContext.drawImage(this.cameraView.nativeElement, 0, 0);
+      renderingContext.drawImage(this.cameraVideo.nativeElement, 0, 0);
     }
-    const imageURL = this.cameraSensor.nativeElement.toDataURL("image/webp");
+    const imageURL = this.cameraCanvas.nativeElement.toDataURL("image/webp");
     this.photoService.processPhoto(imageURL);
   }
 }
