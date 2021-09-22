@@ -1,9 +1,11 @@
 ul {
+    padding-left: 0px;
     list-style-type: none;
     border: 2px solid rebeccapurple;
     white-space: nowrap;
     background-color: rebeccapurple;
     overflow:auto;
+    height:121px;
 }
 li {
     display: inline-block;
