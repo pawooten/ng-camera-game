@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { PicSet } from '../interfaces/PicSet';
+// import * as Pixelmatch from 'pixelmatch';
 
 @Injectable({
   providedIn: 'root'
@@ -23,5 +24,20 @@ export class PhotoService {
     processPhoto(imageURL: string) : void {
         this.picSet.Pics.push(imageURL);
         this.picSetBehaviorSubject.next(this.picSet);
+
+        // let imageRed = this.getPicFromDataURL(this.redImageData);
+        // let imageGreen = this.getPicFromDataURL(this.greenImageData);
+        // let imageOutput: HTMLImageElement = document.createElement('img');
+        let redImageBuffer = Buffer.from(this.redImageData);
+        let greenImageBuffer = Buffer.from(this.greenImageData);
+        let imageOutput = new ArrayBuffer(1000) as Buffer;
+        //Pixelmatch(redImageBuffer, greenImageBuffer, imageOutput, 100, 100);
+
+    }
+
+    getPicFromDataURL(picDataURL: string) : HTMLImageElement {
+        let picImageElement = document.createElement('img');
+        picImageElement.src = picDataURL;
+        return picImageElement;
     }
 }

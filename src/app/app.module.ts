@@ -13,7 +13,6 @@ import { ScoreboardComponent } from './components/scoreboard/scoreboard.componen
 import { PicColorCanvasComponent } from './components/pic-color-canvas/pic-color-canvas.component';
 import { TitleComponent } from './components/title/title.component';
 import { PhotoReelComponent } from './components/photo-reel/photo-reel.component';
-import { ColorConverterComponent } from './color-converter/color-converter.component';
 
 @NgModule({
   declarations: [
@@ -24,8 +23,7 @@ import { ColorConverterComponent } from './color-converter/color-converter.compo
     ScoreboardComponent,
     PicColorCanvasComponent,
     TitleComponent,
-    PhotoReelComponent,
-    ColorConverterComponent
+    PhotoReelComponent
   ],
   imports: [
     BrowserModule,
