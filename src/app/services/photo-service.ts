@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { PicSet } from '../interfaces/PicSet';
 
+const ColorThief = require( '../../../node_modules/colorthief/dist/color-thief.umd')
+
 @Injectable({
   providedIn: 'root'
 })
@@ -24,19 +26,20 @@ export class PhotoService {
         this.picSet.Pics.push(imageURL);
         this.picSetBehaviorSubject.next(this.picSet);
 
-        // let imageRed = this.getPicFromDataURL(this.redImageData);
-        // let imageGreen = this.getPicFromDataURL(this.greenImageData);
-        // let imageOutput: HTMLImageElement = document.createElement('img');
-        // let redImageBuffer = Buffer.from(this.redImageData);
-        // let greenImageBuffer = Buffer.from(this.greenImageData);
-        // let imageOutput = new ArrayBuffer(1000) as Buffer;
-        //Pixelmatch(redImageBuffer, greenImageBuffer, imageOutput, 100, 100);
-
+        let image = this.getPicFromDataURL(imageURL);
+        let color = this.getPrimaryColor(image);
     }
 
     getPicFromDataURL(picDataURL: string) : HTMLImageElement {
         let picImageElement = document.createElement('img');
         picImageElement.src = picDataURL;
+        // picImageElement.width = 100;
+        // picImageElement.height = 100;
         return picImageElement;
+    }
+
+    getPrimaryColor(image: HTMLImageElement) : string {
+        let colorThief = new ColorThief();
+        return colorThief.getColor(image);
     }
 }
