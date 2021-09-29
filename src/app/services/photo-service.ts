@@ -27,12 +27,16 @@ export class PhotoService {
         this.picSetBehaviorSubject.next(this.picSet);
 
         let image = this.getPicFromDataURL(imageURL);
-        let color = this.getPrimaryColor(image);
+        //let color = this.getPrimaryColor(image);
     }
 
     getPicFromDataURL(picDataURL: string) : HTMLImageElement {
         let picImageElement = document.createElement('img');
         picImageElement.src = picDataURL;
+        picImageElement.onload = function() {
+            let colorThief = new ColorThief();
+            console.log( colorThief.getColor(picImageElement));
+        }
         // picImageElement.width = 100;
         // picImageElement.height = 100;
         return picImageElement;
