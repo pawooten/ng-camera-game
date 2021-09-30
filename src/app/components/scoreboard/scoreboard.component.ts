@@ -21,6 +21,7 @@ export class ScoreboardComponent implements OnInit {
     
   }
 
+  // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
   ngOnInit(): void {
   }
 
