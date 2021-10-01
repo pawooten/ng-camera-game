@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-// import { Observable, BehaviorSubject } from 'rxjs';
 import { PicColorState } from '../interfaces/PicColorState';
+import { GameService } from './game-service';
 
 @Injectable({
   providedIn: 'root'
@@ -18,14 +18,11 @@ export class OptionsService {
     { Label: 'Black', Value: 'rgb(0, 0, 0)', Enabled: true },
     { Label: 'Purple', Value: 'rgb(128, 0, 128)', Enabled: true },                        
   ];
-//   private playerNameBehaviorSubject: BehaviorSubject<string>;
-//   playerName$: Observable<string>;
 
-  constructor() {
-    // this.playerNameBehaviorSubject = new BehaviorSubject<string>('');
-    // this.playerName$ = this.playerNameBehaviorSubject.asObservable();
-    // this.playerNameBehaviorSubject.next('Paul');
+  constructor(private gameService: GameService) {
+    this.gameService.load(this.picColorStates)
   }
+
   getPicColorStates() : PicColorState[] {
       return this.picColorStates;
   }
