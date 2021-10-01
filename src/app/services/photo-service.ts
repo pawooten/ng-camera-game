@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable, BehaviorSubject, ReplaySubject } from 'rxjs';
 import { PicSet } from '../interfaces/PicSet';
 
 const ColorThief = require( '../../../node_modules/colorthief/dist/color-thief.umd')
@@ -26,20 +26,23 @@ export class PhotoService {
         this.picSet.Pics.push(imageURL);
         this.picSetBehaviorSubject.next(this.picSet);
 
-        let image = this.getPicFromDataURL(imageURL);
-        //let color = this.getPrimaryColor(image);
+        let image$ = this.getPicFromDataURL(imageURL);
+        image$.subscribe((image: HTMLImageElement) => {
+            if (image.width !== 0)
+            {
+                console.log(this.getPrimaryColor(image));
+            }
+        });
     }
 
-    getPicFromDataURL(picDataURL: string) : HTMLImageElement {
+    getPicFromDataURL(picDataURL: string) : Observable<HTMLImageElement> {
         let picImageElement = document.createElement('img');
         picImageElement.src = picDataURL;
+        let imageSubject = new ReplaySubject<HTMLImageElement>();
         picImageElement.onload = function() {
-            let colorThief = new ColorThief();
-            console.log( colorThief.getColor(picImageElement));
+            imageSubject.next(picImageElement);
         }
-        // picImageElement.width = 100;
-        // picImageElement.height = 100;
-        return picImageElement;
+        return imageSubject.asObservable();
     }
 
     getPrimaryColor(image: HTMLImageElement) : string {
