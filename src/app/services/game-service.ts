@@ -1,27 +1,22 @@
 import { Injectable } from '@angular/core';
+
+import { OptionsService } from './options-service';
 import { PicColorState } from '../interfaces/PicColorState';
 import { RGB } from '../interfaces/RGB';
 import { RGBFromString, calculateRGBColorDistance } from '../utils';
+import { Game } from '../game';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GameService {
 
-    private picSets: PicColorState[] = [];
-    private picSetIndex = 0;
-    
-    load(newPicSets: PicColorState[]) {
-        this.picSets = newPicSets;
-        this.picSetIndex = 0;
+    private game: Game;
+    constructor(private optionsService: OptionsService){
+        this.game = new Game(this.optionsService.getPicColorStates());
     }
 
     examineColor(color: RGB) : void {
-        console.log('color is ' + JSON.stringify(color));
-        let picSet = this.picSets[this.picSetIndex];
-        let picRGB = RGBFromString(picSet.Value);
-        // how to diff ...
-        let distance = calculateRGBColorDistance(color, picRGB);
-        console.log(`distance=${distance}`);
+        this.game.examineColor(color);
     }
 }

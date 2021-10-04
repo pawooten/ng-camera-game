@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { PicColorState } from '../interfaces/PicColorState';
-import { GameService } from './game-service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OptionsService {
 
-    readonly picColorStates = [  { Label: 'Red', Value: 'rgb(255, 0, 0)', Enabled: true },
+    readonly picColorStates = [ 
+    { Label: 'Red', Value: 'rgb(255, 0, 0)', Enabled: true },
     { Label: 'Green', Value: '	rgb(0, 128, 0)', Enabled: true },
     { Label: 'Blue', Value: 'rgb(0, 0, 255)', Enabled: true },
     { Label: 'Yellow', Value: 'rgb(255, 255, 0)', Enabled: true },
@@ -18,10 +18,6 @@ export class OptionsService {
     { Label: 'Black', Value: 'rgb(0, 0, 0)', Enabled: true },
     { Label: 'Purple', Value: 'rgb(128, 0, 128)', Enabled: true },                        
   ];
-
-  constructor(private gameService: GameService) {
-    this.gameService.load(this.picColorStates)
-  }
 
   getPicColorStates() : PicColorState[] {
       return this.picColorStates;

@@ -23,7 +23,6 @@ export class NgCameraComponent implements OnInit {
   }
 
   onButtonClicked() : void {
-
     this.cameraCanvas.nativeElement.width = this.cameraVideo.nativeElement.videoWidth;
     this.cameraCanvas.nativeElement.height = this.cameraVideo.nativeElement.videoHeight;
 

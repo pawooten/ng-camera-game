@@ -13,9 +13,6 @@ export class PhotoService {
 
     PicSet$ : Observable<PicSet>;
 
-    readonly redImageData = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAIAAAD/gAIDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAADLSURBVHhe7cfBCQAgAMSw239p/RcsDlDIJzvLLz6Cj+Aj+Ag+go/gI/gIPoKP4CP4CD6Cj+Aj+Ag+go/gI/gIPoKP4CP4CD6Cj+Aj+Ag+go/gI/gIPoKP4CP4CD6Cj+Aj+Ag+go/gI/gIPoKP4CP4CD6Cj+Aj+Ag+go/gI/gIPoKP4CP4CD6Cj+Aj+Ag+go/gI/gIPoKP4CP4CD6Cj+Aj+Ag+go/gI/gIPoKP4CP4CD6Cj+Aj+Ag+go/gI/gIPoKP4CP4CD6Cj+DztF2eLesr6yjgngAAAABJRU5ErkJggg==';
-    readonly blueImageData = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAIAAAD/gAIDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAADnSURBVHhe7dChAcAwDMCwrP//3JEeEHOJmPubucPOeWXBrMCswKzArMCswKzArMCswKzArMCswKzArMCswKzArMCswKzArMCswKzArMCswKzArMCswKzArMCswKzArMCswKzArMCswKzArMCswKzArMCswKzArMCswKzArMCswKzArMCswKzArMCswKzArMCswKzArMCswKzArMCswKzArMCswKzArMCswKzArMCswKzArMCswKzArMCswKzArMCswKzArMCswKzArMCswKzArMCswKzArMCswKzArMCswKzArMCstZkfiGABx0A/pbQAAAAASUVORK5CYII=';
-    readonly greenImageData = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAIAAAD/gAIDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAADnSURBVHhe7dChAcAwDMCwrJf39JEeEHOJmPubOyydVxbMCswKzArMCswKzArMCswKzArMCswKzArMCswKzArMCswKzArMCswKzArMCswKzArMCswKzArMCswKzArMCswKzArMCswKzArMCswKzArMCswKzArMCswKzArMCswKzArMCswKzArMCswKzArMCswKzArMCswKzArMCswKzArMCswKzArMCswKzArMCswKzArMCswKzArMCswKzArMCswKzArMCswKzArMCswKzArMCswKzArMCswKzArMCswKzArMCsxam/kBMosBSMEkrosAAAAASUVORK5CYII=';
     private picSet: PicSet = { Pics: [] };
     private picSetBehaviorSubject: BehaviorSubject<PicSet>;
 
@@ -35,13 +32,34 @@ export class PhotoService {
     }
 
     getPicFromDataURL(picDataURL: string) : Observable<HTMLImageElement> {
+        var cropper = this.cropImage;
         let picImageElement = document.createElement('img');
         picImageElement.src = picDataURL;
         let imageSubject = new ReplaySubject<HTMLImageElement>();
         picImageElement.onload = function() {
             imageSubject.next(picImageElement);
+            imageSubject.next(cropper(picImageElement));
         }
         return imageSubject.asObservable();
+    }
+
+    cropImage(imageElement: HTMLImageElement) : HTMLImageElement {
+        const width = imageElement.width;
+        const height = imageElement.height;
+
+        const croppedWidth = width / 3;
+        const croppedHeight = height / 3;
+
+        let renderingContext = document.createElement('canvas').getContext("2d");
+        if (renderingContext)
+        {
+            renderingContext.drawImage(imageElement, 0, 0);
+            renderingContext.clearRect(0, 0, croppedWidth, height); // left column
+            renderingContext.clearRect(width - croppedWidth, 0, croppedWidth, height); // right column
+            renderingContext.clearRect(croppedWidth, 0, croppedWidth, croppedHeight); // top square
+            renderingContext.clearRect(croppedWidth, height - croppedHeight, croppedWidth, height); // bottom square
+        }
+        return imageElement;
     }
 
     getPrimaryColor(image: HTMLImageElement) : RGB {
