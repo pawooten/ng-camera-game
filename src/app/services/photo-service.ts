@@ -32,34 +32,49 @@ export class PhotoService {
     }
 
     getPicFromDataURL(picDataURL: string) : Observable<HTMLImageElement> {
-        var cropper = this.cropImage;
+        let getCroppedImage = this.getCroppedImage;
+        let imageSubject = new ReplaySubject<HTMLImageElement>();
+
         let picImageElement = document.createElement('img');
         picImageElement.src = picDataURL;
-        let imageSubject = new ReplaySubject<HTMLImageElement>();
         picImageElement.onload = function() {
-            imageSubject.next(picImageElement);
-            imageSubject.next(cropper(picImageElement));
+            let croppedImage$ = getCroppedImage(picImageElement);
+            croppedImage$.subscribe((image: HTMLImageElement) => {
+                imageSubject.next(image);
+            });
         }
         return imageSubject.asObservable();
     }
 
-    cropImage(imageElement: HTMLImageElement) : HTMLImageElement {
+    getCroppedImage(imageElement: HTMLImageElement) : Observable<HTMLImageElement> {
         const width = imageElement.width;
         const height = imageElement.height;
-
+        const middleX = width / 2;
+        const middleY = height / 2;
         const croppedWidth = width / 3;
         const croppedHeight = height / 3;
 
-        let renderingContext = document.createElement('canvas').getContext("2d");
+        let croppedImageElement = document.createElement('img');
+        let canvas = document.createElement('canvas');
+        let croppedImageSubject = new ReplaySubject<HTMLImageElement>();
+        let renderingContext = canvas.getContext("2d");
         if (renderingContext)
         {
-            renderingContext.drawImage(imageElement, 0, 0);
-            renderingContext.clearRect(0, 0, croppedWidth, height); // left column
-            renderingContext.clearRect(width - croppedWidth, 0, croppedWidth, height); // right column
-            renderingContext.clearRect(croppedWidth, 0, croppedWidth, croppedHeight); // top square
-            renderingContext.clearRect(croppedWidth, height - croppedHeight, croppedWidth, height); // bottom square
+            renderingContext.drawImage(imageElement,
+                middleX - (croppedWidth / 2),
+                middleY - (croppedHeight / 2),
+                croppedWidth,
+                croppedHeight,
+                0,
+                0,
+                canvas.width,
+                canvas.height );
+            croppedImageElement.src = canvas.toDataURL('image/png');
+            croppedImageElement.onload = function() {
+                croppedImageSubject.next(croppedImageElement);    
+            }
         }
-        return imageElement;
+        return croppedImageSubject.asObservable();    
     }
 
     getPrimaryColor(image: HTMLImageElement) : RGB {
