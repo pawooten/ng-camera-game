@@ -1,5 +1,6 @@
 import { PicColorState } from "./interfaces/PicColorState";
 import { RGB } from "./interfaces/RGB";
+import { NotificationService } from "./services/notification-service";
 import { calculateRGBColorDistance, RGBFromString } from "./utils";
 
 /*
@@ -8,7 +9,7 @@ import { calculateRGBColorDistance, RGBFromString } from "./utils";
 export class Game {
     private picSetIndex = 2; // blue
 
-    constructor(private readonly picSets: PicColorState[]) {
+    constructor(private readonly notificationService: NotificationService, private readonly picSets: PicColorState[]) {
     }
 
     examineColor(color: RGB) : void {
@@ -17,8 +18,6 @@ export class Game {
         let picRGB = RGBFromString(picSet.Value);
 
         let distance = calculateRGBColorDistance(color, picRGB);
-        console.log(`distance=${distance}`);
-
-        // todo
+        this.notificationService.showNotificationMessage(`distance=${distance}`);
     }
 }

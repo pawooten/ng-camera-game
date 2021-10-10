@@ -13,6 +13,8 @@ import { ScoreboardComponent } from './components/scoreboard/scoreboard.componen
 import { PicColorCanvasComponent } from './components/pic-color-canvas/pic-color-canvas.component';
 import { TitleComponent } from './components/title/title.component';
 import { PhotoReelComponent } from './components/photo-reel/photo-reel.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -27,9 +29,11 @@ import { PhotoReelComponent } from './components/photo-reel/photo-reel.component
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     MatButtonModule,
     MatSliderModule,
     MatSlideToggleModule,
+    MatSnackBarModule,
     MatGridListModule,
     AppRoutingModule
   ],
