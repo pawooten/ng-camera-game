@@ -5,7 +5,6 @@ ul {
     white-space: nowrap;
     background-color: rebeccapurple;
     overflow:auto;
-    height:121px;
 }
 li {
     display: inline-block;
