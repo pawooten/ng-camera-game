@@ -1,5 +1,8 @@
-export interface PicColorState {
-    Label: string;
-    Value: string;
-    Enabled: boolean;
+export interface PicColor {
+  Label: string;
+  Value: string;
+}
+
+export interface PicColorState extends PicColor {
+  Enabled: boolean;
 }

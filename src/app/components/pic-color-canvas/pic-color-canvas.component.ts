@@ -1,22 +1,16 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { PicColorState } from 'src/app/interfaces/PicColorState';
-import { OptionsService } from 'src/app/services/options-service';
+import { Component, Input, OnInit } from '@angular/core';
+import { PicColor } from 'src/app/interfaces/PicColorState';
 
 @Component({
   selector: 'app-pic-color-canvas',
   templateUrl: './pic-color-canvas.component.html',
-  styleUrls: ['./pic-color-canvas.component.css']
+  styleUrls: ['./pic-color-canvas.component.css'],
 })
 export class PicColorCanvasComponent implements OnInit {
+  @Input() PicColor?: PicColor;
 
-  @Input() PicColor! : PicColorState;
-  @Output() PicColorChange = new EventEmitter<PicColorState>();
-
-  constructor(private optionsService: OptionsService) {
-  }
+  constructor() {}
 
   // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }
