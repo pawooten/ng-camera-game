@@ -1,4 +1,4 @@
-<span>
-    <canvas [ngStyle]="{'background-color': PicColor.Value}"></canvas>
-    <span class="colorLabelSpan">{{PicColor.Label}}</span>
+<span *ngIf="PicColor">
+  <canvas [ngStyle]="{ 'background-color': PicColor.Value }"></canvas>
+  <span class="colorLabelSpan">{{ PicColor.Label }}</span>
 </span>

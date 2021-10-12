@@ -1,16 +1,17 @@
 <div>
-    <h3>SETTINGS</h3>
-    <mat-slider min="1" max="100" step="10" value="100"></mat-slider>
-    <br/>
-    <span class="mat-slider-label">Pics per Round</span>
-    <span>
-        <ul *ngFor="let picColor of picColors; let i = index;">
-            <li>
-                <mat-slide-toggle [color]="primaryThemeColor" [checked]="picColor.Enabled"></mat-slide-toggle>
-                <span>
-                    <app-pic-color-canvas [(PicColor)]="picColors[i]"></app-pic-color-canvas>
-                </span>
-            </li>
-        </ul>
-    </span>
-</div> 
+  <h3>SETTINGS</h3>
+  <mat-slider min="1" max="100" step="10" value="100"></mat-slider>
+  <br />
+  <span class="mat-slider-label">Pics per Round</span>
+  <span>
+    <ul>
+      <li *ngFor="let picColor of picColors">
+        <mat-slide-toggle
+          [color]="primaryThemeColor"
+          [checked]="picColor.Enabled"
+        ></mat-slide-toggle>
+        <app-pic-color-canvas [PicColor]="picColor"></app-pic-color-canvas>
+      </li>
+    </ul>
+  </span>
+</div>
