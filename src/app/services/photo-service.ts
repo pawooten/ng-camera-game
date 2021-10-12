@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject, ReplaySubject } from 'rxjs';
+import ColorThief from 'colorthief';
+
 import { PicSet } from '../interfaces/PicSet';
 import { RGB } from '../interfaces/RGB';
 import { GameService } from './game-service';
-
-const ColorThief = require( '../../../node_modules/colorthief/dist/color-thief.umd')
 
 @Injectable({
   providedIn: 'root'
