@@ -6,7 +6,6 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing-module';
-import { HtmlCameraComponent } from './components/html-camera/html-camera.component';
 import { NgCameraComponent } from './components/ng-camera/ng-camera.component';
 import { OptionsPanelComponent } from './components/options-panel/options-panel.component';
 import { ScoreboardComponent } from './components/scoreboard/scoreboard.component';
@@ -19,13 +18,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
-    HtmlCameraComponent,
     NgCameraComponent,
     OptionsPanelComponent,
     ScoreboardComponent,
     PicColorCanvasComponent,
     TitleComponent,
-    PhotoReelComponent
+    PhotoReelComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,9 +33,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatSlideToggleModule,
     MatSnackBarModule,
     MatGridListModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
