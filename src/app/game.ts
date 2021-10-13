@@ -1,23 +1,23 @@
-import { PicColorState } from "./interfaces/PicColorState";
-import { RGB } from "./interfaces/RGB";
-import { NotificationService } from "./services/notification-service";
-import { calculateRGBColorDistance, RGBFromString } from "./utils";
+import { Color } from './interfaces/color';
+import { PicColorState } from './interfaces/PicColorState';
+import { NotificationService } from './services/notification-service';
 
 /*
  * A Game is composed of a set of picSets the player must match.
-*/
+ */
 export class Game {
-    private picSetIndex = 2; // blue
+  private picSetIndex = 2; // blue
 
-    constructor(private readonly notificationService: NotificationService, private readonly picSets: PicColorState[]) {
-    }
+  constructor(
+    private readonly notificationService: NotificationService,
+    private readonly picSets: PicColorState[]
+  ) {}
 
-    examineColor(color: RGB) : void {
-        console.log('color is ' + JSON.stringify(color));
-        let picSet = this.picSets[this.picSetIndex];
-        let picRGB = RGBFromString(picSet.Value);
-
-        let distance = calculateRGBColorDistance(color, picRGB);
-        this.notificationService.showNotificationMessage(`distance=${distance}`);
-    }
+  examineColor(color: Color): void {
+    color.debug();
+    // console.log(`color is ${color}`);
+    let picSet = this.picSets[this.picSetIndex];
+    let distance = Color.distance(color, picSet.Value);
+    this.notificationService.showNotificationMessage(`distance=${distance}`);
+  }
 }
