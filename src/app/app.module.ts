@@ -4,7 +4,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing-module';
-import { HtmlCameraComponent } from './components/html-camera/html-camera.component';
 import { NgCameraComponent } from './components/ng-camera/ng-camera.component';
 import { OptionsPanelComponent } from './components/options-panel/options-panel.component';
 import { ScoreboardComponent } from './components/scoreboard/scoreboard.component';
@@ -16,7 +15,6 @@ import { MaterialModule } from './shared/material.module';
 @NgModule({
   declarations: [
     AppComponent,
-    HtmlCameraComponent,
     NgCameraComponent,
     OptionsPanelComponent,
     ScoreboardComponent,
