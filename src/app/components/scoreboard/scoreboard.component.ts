@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { PicAssignment } from 'src/app/interfaces/PicAssignment';
-import { OptionsService } from '../../services/options-service';
+import { PicAssignment } from 'src/app/interfaces/pic-assignment';
+import { OptionsService } from 'src/app/services/options-service';
 @Component({
   selector: 'app-scoreboard',
   templateUrl: './scoreboard.component.html',

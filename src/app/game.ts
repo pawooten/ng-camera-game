@@ -1,5 +1,5 @@
 import { Color } from './interfaces/color';
-import { PicColorState } from './interfaces/PicColorState';
+import { PicColorState } from './interfaces/pic-color-state';
 import { NotificationService } from './services/notification-service';
 
 /*

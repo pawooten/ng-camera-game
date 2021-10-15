@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OptionsService } from 'src/app/services/options-service';
 import { ThemePalette } from '@angular/material/core';
-import { PicColorState } from 'src/app/interfaces/PicColorState';
+import { PicColorState } from 'src/app/interfaces/pic-color-state';
 
 @Component({
   selector: 'app-options-panel',

@@ -1,4 +1,4 @@
-import { PicColorState } from "./PicColorState";
+import { PicColorState } from "./pic-color-state";
 
 export interface PicAssignment {
     PicNumber: number;

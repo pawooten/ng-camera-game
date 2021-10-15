@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject, ReplaySubject } from 'rxjs';
 import ColorThief from 'colorthief';
 
-import { PicSet } from '../interfaces/PicSet';
+import { PicSet } from '../interfaces/pic-set';
 import { GameService } from './game-service';
 import { Color } from '../interfaces/color';
 

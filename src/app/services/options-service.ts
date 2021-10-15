@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Color } from '../interfaces/color';
-import { PicColorState } from '../interfaces/PicColorState';
+import { PicColorState } from '../interfaces/pic-color-state';
 
 @Injectable({
   providedIn: 'root',
