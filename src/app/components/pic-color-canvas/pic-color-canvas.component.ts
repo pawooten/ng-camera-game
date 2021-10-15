@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { PicColor } from 'src/app/interfaces/PicColorState';
+import { PicColor } from 'src/app/interfaces/PicColor';
 
 @Component({
   selector: 'app-pic-color-canvas',

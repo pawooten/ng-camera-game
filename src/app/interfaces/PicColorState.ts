@@ -1,9 +1,5 @@
 import { Color } from './color';
-
-export interface PicColor {
-  Label: string;
-  Value: Color;
-}
+import { PicColor } from './PicColor';
 
 export interface PicColorState extends PicColor {
   Enabled: boolean;
