@@ -1,23 +1,23 @@
 import { Color } from './interfaces/color';
-import { PicColorState } from './interfaces/pic-color-state';
+import { PicAssignment } from './interfaces/pic-assignment';
 import { NotificationService } from './services/notification-service';
 
 /*
  * A Game is composed of a set of picSets the player must match.
  */
 export class Game {
-  private picSetIndex = 2; // blue
+  private index = 2; // blue
 
   constructor(
     private readonly notificationService: NotificationService,
-    private readonly picSets: PicColorState[]
+    private readonly picAssignments: PicAssignment[]
   ) {}
 
   examineColor(color: Color): void {
-    color.debug();
-    // console.log(`color is ${color}`);
-    let picSet = this.picSets[this.picSetIndex];
-    let distance = Color.distance(color, picSet.Value);
-    this.notificationService.showNotificationMessage(`distance=${distance}`);
-  }
+      color.debug();
+      let picAssignment = this.picAssignments[this.index];
+      let distance = Color.distance(color, picAssignment.Color.Value);
+      // this.notificationService.showNotificationMessage(`distance=${distance}`);
+      this.notificationService.showPicAssignmentNotification(picAssignment);
+    }
 }
