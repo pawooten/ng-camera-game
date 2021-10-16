@@ -1,3 +1,6 @@
+/**
+ * Describes a Color, composed of r, g, b components.
+ */
 export class Color {
   constructor(
     public readonly r: number,
@@ -5,6 +8,9 @@ export class Color {
     public readonly b: number
   ) {}
 
+  /**
+   * @returns Converts to a string "rgb(?,?,?)"
+   */
   toRgb() {
     return `rgb(${this.r}, ${this.g}, ${this.b})`;
   }
