@@ -14,7 +14,9 @@ export class NotificationService {
         this.snackBar.open(message);
     }
     showPicAssignmentNotification(picAssignment: PicAssignment) : void {
-      // todo not sure how to pass picAssignment argument to component
-      this.snackBar.openFromComponent(PicAssignmentViewerComponent);
+      if (!picAssignment) {
+        return;
+      }
+      this.snackBar.openFromComponent(PicAssignmentViewerComponent, { data: JSON.stringify(picAssignment) });
     }
 }
