@@ -5,6 +5,9 @@ div {
     right:10px;
     bottom: 10px;
     border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 a {
     margin-right: 5px;

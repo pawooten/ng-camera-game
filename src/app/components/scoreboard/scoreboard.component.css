@@ -4,8 +4,6 @@
 .outerDiv {
     background-color: var(--accent-lighter-color);
     width:200px;
-    position:absolute;
-    left: calc(50% - 65px);
     color: var(--primary-color);
     border: 2px solid var(--accent-color);
 }
