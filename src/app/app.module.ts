@@ -11,7 +11,7 @@ import { PicColorCanvasComponent } from './components/pic-color-canvas/pic-color
 import { TitleComponent } from './components/title/title.component';
 import { PhotoReelComponent } from './components/photo-reel/photo-reel.component';
 import { MaterialModule } from './shared/material.module';
-import { PicAssignmentResultViewerComponent } from './components/pic-assignment-viewer/pic-assignment-result-viewer.component';
+import { PicAssignmentResultViewerComponent } from './components/pic-assignment-result-viewer/pic-assignment-result-viewer.component';
 
 @NgModule({
   declarations: [
