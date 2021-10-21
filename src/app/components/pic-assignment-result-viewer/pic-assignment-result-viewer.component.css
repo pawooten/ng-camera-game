@@ -1,0 +1,12 @@
+div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+span {
+    margin:10px;
+}
+.centerAdjust {
+    position:relative;
+    top:-8px;
+}
