@@ -1,5 +1,7 @@
 import { Color } from './interfaces/color';
 import { PicAssignment } from './interfaces/pic-assignment';
+import { PicAssignmentResult } from './interfaces/pic-assignment-result';
+import { PicAssignmentSubmission } from './interfaces/pic-assignment-submission';
 import { NotificationService } from './services/notification-service';
 
 /*
@@ -14,10 +16,28 @@ export class Game {
   ) {}
 
   examineColor(color: Color): void {
-      color.debug();
-      let picAssignment = this.picAssignments[this.index];
-      let distance = Color.distance(color, picAssignment.Color.Value);
-      // this.notificationService.showNotificationMessage(`distance=${distance}`);
-      this.notificationService.showPicAssignmentNotification(picAssignment);
+    color.debug();
+    const result = this.evaluateSubmission(this.composeSubmission(color));
+    this.notificationService.showPicAssignmentNotification(result);
+  }
+
+  composeSubmission(color: Color) : PicAssignmentSubmission {
+    const assignment = this.picAssignments[this.index];
+    return {
+      Assignment: assignment,
+      Color: {
+        Label: `Pic ${this.index + 1 } of ${this.picAssignments.length}`,
+        Value: color
+      }
+    };
+  }
+
+  evaluateSubmission(submission: PicAssignmentSubmission) : PicAssignmentResult {
+    const distance = Color.distance(submission.Color.Value, submission.Assignment.Color.Value);
+    return {
+      Submission: submission,
+      Distance: distance,
+      Score: 100
     }
+  }
 }
