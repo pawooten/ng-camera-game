@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { PicAssignmentResultViewerComponent } from '../components/pic-assignment-viewer/pic-assignment-result-viewer.component';
+import { PicAssignmentResultViewerComponent } from '../components/pic-assignment-result-viewer/pic-assignment-result-viewer.component';
 import { PicAssignmentResult } from '../interfaces/pic-assignment-result';
 
 @Injectable({
