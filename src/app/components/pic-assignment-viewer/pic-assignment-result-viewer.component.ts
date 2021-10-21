@@ -4,11 +4,11 @@ import { Color } from 'src/app/interfaces/color';
 import { PicAssignmentResult } from 'src/app/interfaces/pic-assignment-result';
 
 @Component({
-  selector: 'app-pic-assignment-viewer',
-  templateUrl: './pic-assignment-viewer.component.html',
-  styleUrls: ['./pic-assignment-viewer.component.css']
+  selector: 'app-pic-assignment-result-viewer',
+  templateUrl: './pic-assignment-result-viewer.component.html',
+  styleUrls: ['./pic-assignment-result-viewer.component.css']
 })
-export class PicAssignmentViewerComponent implements OnInit {
+export class PicAssignmentResultViewerComponent implements OnInit {
 
   Result: PicAssignmentResult;
 

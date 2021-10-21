@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { PicAssignmentViewerComponent } from '../components/pic-assignment-viewer/pic-assignment-viewer.component';
+import { PicAssignmentResultViewerComponent } from '../components/pic-assignment-viewer/pic-assignment-result-viewer.component';
 import { PicAssignmentResult } from '../interfaces/pic-assignment-result';
 
 @Injectable({
@@ -17,6 +17,6 @@ export class NotificationService {
       if (!assignmentResult) {
         return;
       }
-      this.snackBar.openFromComponent(PicAssignmentViewerComponent, { data: JSON.stringify(assignmentResult) });
+      this.snackBar.openFromComponent(PicAssignmentResultViewerComponent, { data: JSON.stringify(assignmentResult) });
     }
 }

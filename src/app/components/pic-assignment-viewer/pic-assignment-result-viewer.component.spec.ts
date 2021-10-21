@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PicAssignmentViewerComponent } from './pic-assignment-viewer.component';
+import { PicAssignmentResultViewerComponent } from './pic-assignment-result-viewer.component';
 
 describe('PicAssignmentViewerComponent', () => {
-  let component: PicAssignmentViewerComponent;
-  let fixture: ComponentFixture<PicAssignmentViewerComponent>;
+  let component: PicAssignmentResultViewerComponent;
+  let fixture: ComponentFixture<PicAssignmentResultViewerComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PicAssignmentViewerComponent ]
+      declarations: [ PicAssignmentResultViewerComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PicAssignmentViewerComponent);
+    fixture = TestBed.createComponent(PicAssignmentResultViewerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
