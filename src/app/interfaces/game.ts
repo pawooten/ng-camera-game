@@ -1,8 +1,8 @@
-import { Color } from './interfaces/color';
-import { PicAssignment } from './interfaces/pic-assignment';
-import { PicAssignmentResult } from './interfaces/pic-assignment-result';
-import { PicAssignmentSubmission } from './interfaces/pic-assignment-submission';
-import { NotificationService } from './services/notification-service';
+import { Color } from './color';
+import { PicAssignment } from './pic-assignment';
+import { PicAssignmentResult } from './pic-assignment-result';
+import { PicAssignmentSubmission } from './pic-assignment-submission';
+import { NotificationService } from '../services/notification-service';
 
 /*
  * A Game is composed of a set of picSets the player must match.

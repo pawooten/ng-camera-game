@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { OptionsService } from './options-service';
-import { Game } from '../game';
+import { Game } from '../interfaces/game';
 import { NotificationService } from './notification-service';
 import { Color } from '../interfaces/color';
 import { PicColorState } from '../interfaces/pic-color-state';
