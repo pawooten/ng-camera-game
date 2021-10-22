@@ -10,6 +10,8 @@ import { NotificationService } from '../services/notification-service';
 export class Game {
   private index = 2; // blue
 
+  public readonly assignmentResults: PicAssignmentResult[] = [];
+
   constructor(
     private readonly notificationService: NotificationService,
     private readonly picAssignments: PicAssignment[]
@@ -19,6 +21,7 @@ export class Game {
     color.debug();
     const result = this.evaluateSubmission(this.composeSubmission(color));
     this.notificationService.showPicAssignmentNotification(result);
+    this.assignmentResults.push(result);
   }
 
   composeSubmission(color: Color) : PicAssignmentSubmission {

@@ -6,6 +6,7 @@ import { NotificationService } from './notification-service';
 import { Color } from '../interfaces/color';
 import { PicColorState } from '../interfaces/pic-color-state';
 import { PicAssignment } from '../interfaces/pic-assignment';
+import { PicAssignmentResult } from '../interfaces/pic-assignment-result';
 
 @Injectable({
   providedIn: 'root',
@@ -27,7 +28,7 @@ export class GameService {
     picColorStates.forEach(picColorState => {
       if (picColorState.Enabled)
       {
-        picAssignments.push({ PicNumber: picAssignments.length + 1, Color: picColorState, Score: 0 });
+        picAssignments.push({ PicNumber: picAssignments.length + 1, Color: picColorState });
       }
     });
     return picAssignments;
@@ -35,5 +36,9 @@ export class GameService {
 
   examineColor(color: Color): void {
     this.game.examineColor(color);
+  }
+
+  getResults(): PicAssignmentResult[] {
+    return this.game.assignmentResults;
   }
 }

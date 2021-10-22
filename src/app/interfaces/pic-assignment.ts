@@ -15,8 +15,4 @@ export interface PicAssignment {
      * The PicColor of this PicAssignment.
      */
     Color: PicColor;
-    /** 
-     * The Score the user has received for this PicAssignment, if any. 
-     */
-    Score: number;
 }
