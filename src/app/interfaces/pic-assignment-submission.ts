@@ -1,6 +1,9 @@
 import { PicAssignment } from './pic-assignment';
 import { PicColor } from './pic-color';
 
+/**
+ * PicAssignmentSubmissions are composed of a PicAssignment and the PicColor which will be compared to the assignment.
+ */
 export interface PicAssignmentSubmission {
     /**
      * The assignment of the submission, aka the pic color the user was challenged to match.

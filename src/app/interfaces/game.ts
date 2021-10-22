@@ -5,7 +5,7 @@ import { PicAssignmentSubmission } from './pic-assignment-submission';
 import { NotificationService } from '../services/notification-service';
 
 /*
- * A Game is composed of a set of picSets the player must match.
+ * A Game is composed of a set of picAssignments the player must match.
  */
 export class Game {
   private index = 2; // blue
