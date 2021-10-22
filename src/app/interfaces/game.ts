@@ -8,7 +8,7 @@ import { NotificationService } from '../services/notification-service';
  * A Game is composed of a set of picAssignments the player must match.
  */
 export class Game {
-  private index = 2; // blue
+  private index = 0;
 
   public readonly assignmentResults: PicAssignmentResult[] = [];
 
@@ -22,6 +22,11 @@ export class Game {
     const result = this.evaluateSubmission(this.composeSubmission(color));
     this.notificationService.showPicAssignmentNotification(result);
     this.assignmentResults.push(result);
+    this.index += 1;
+    if (this.assignmentResults.length == this.index) {
+      // hooray, you won
+      this.index = 0; // loop back around
+    }
   }
 
   composeSubmission(color: Color) : PicAssignmentSubmission {
