@@ -16,8 +16,11 @@ export class PicAssignmentResultViewerComponent implements OnInit {
     this.Result = JSON.parse(data) as PicAssignmentResult;
     
     // feels so wrong
-    let jsonColor = this.Result.Submission.Color.Value;
-    this.Result.Submission.Color.Value = new Color(jsonColor.r, jsonColor.g, jsonColor.b);
+    let jsonColor;
+    if (this.Result.Submission.Color) {
+      jsonColor = this.Result.Submission.Color!.Value;
+      this.Result.Submission.Color!.Value = new Color(jsonColor.r, jsonColor.g, jsonColor.b);  
+    }
     jsonColor = this.Result.Submission.Assignment.Color.Value;
     this.Result.Submission.Assignment.Color.Value = new Color(jsonColor.r, jsonColor.g, jsonColor.b);
   }

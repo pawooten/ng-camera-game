@@ -13,5 +13,5 @@ export interface PicAssignmentSubmission {
      * The color of the submission. This is the color which will be compared to the assignment
      * to determine score (and if the user advances to the next assignment / round).
      */
-    Color: PicColor;
+    Color?: PicColor;
 }
