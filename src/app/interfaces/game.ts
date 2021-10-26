@@ -3,14 +3,17 @@ import { PicAssignment } from './pic-assignment';
 import { PicAssignmentResult } from './pic-assignment-result';
 import { PicAssignmentSubmission } from './pic-assignment-submission';
 import { NotificationService } from '../services/notification-service';
-
+import { Observable, ReplaySubject } from 'rxjs';
 /*
  * A Game is composed of a set of picAssignments the player must match.
  */
 export class Game {
   private index = 0;
 
-  public readonly assignmentResults: PicAssignmentResult[] = [];
+  private readonly assignmentResults: PicAssignmentResult[] = [];
+  private readonly assignmentResultSubject = new ReplaySubject<PicAssignmentResult[]>();
+
+  AssignmentResults$ = this.assignmentResultSubject.asObservable();
 
   constructor(
     private readonly notificationService: NotificationService,
@@ -22,6 +25,7 @@ export class Game {
     const result = this.evaluateSubmission(this.composeSubmission(color));
     this.notificationService.showPicAssignmentNotification(result);
     this.assignmentResults.push(result);
+    this.assignmentResultSubject.next(this.assignmentResults);
     this.index += 1;
     if (this.assignmentResults.length == this.index) {
       // hooray, you won

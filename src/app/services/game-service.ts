@@ -7,6 +7,7 @@ import { Color } from '../interfaces/color';
 import { PicColorState } from '../interfaces/pic-color-state';
 import { PicAssignment } from '../interfaces/pic-assignment';
 import { PicAssignmentResult } from '../interfaces/pic-assignment-result';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -38,7 +39,7 @@ export class GameService {
     this.game.examineColor(color);
   }
 
-  getResults(): PicAssignmentResult[] {
-    return this.game.assignmentResults;
+  getResults(): Observable<PicAssignmentResult[]> {
+    return this.game.AssignmentResults$;
   }
 }
