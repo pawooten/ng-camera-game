@@ -1,4 +1,5 @@
 @use "~@angular/material" as mat;
+@use "./app/components/scoreboard/scoreboard.component.theme.scss" as scoreboard;
 
 @include mat.core();
 
@@ -15,3 +16,4 @@ $my-theme: mat.define-light-theme(
 );
 
 @include mat.all-component-themes($my-theme);
+@include scoreboard.theme($my-theme);
