@@ -1,7 +1,7 @@
 * {
   font-family: "Roboto";
 }
-.outerDiv {
+.scoreboard__background {
   width: 200px;
   border-width: 2px;
   border-style: solid;

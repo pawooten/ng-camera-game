@@ -1,8 +1,7 @@
-<div class="outerDiv">
+<div class="scoreboard__background scoreboard__background--themed">
   <h3>Scoreboard</h3>
   <mat-grid-list cols="3" row="2:1" rowHeight="80px" gutterSize="5px">
     <mat-grid-tile *ngFor="let assignmentResult of assignmentResults$ | async" colspan="3">
-      <!-- <mat-icon matListIcon>folder</mat-icon> -->
       <div class="rowDiv">
         <span class="picNumberColumn">{{ assignmentResult.Submission.Assignment.PicNumber }}</span>
         <span class="colorColumn">
