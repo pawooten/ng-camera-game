@@ -1,6 +1,8 @@
 @use "~@angular/material" as mat;
 @use "./app/components/scoreboard/scoreboard.component.theme.scss" as scoreboard;
 @use "./app/components/pic-color-canvas/pic-color-canvas.component.theme" as picColorCanvas;
+@use "./app/components/ng-camera/ng-camera-component.theme" as ngCamera;
+
 @include mat.core();
 
 $my-primary: mat.define-palette(mat.$indigo-palette, 500);
@@ -18,3 +20,4 @@ $my-theme: mat.define-light-theme(
 @include mat.all-component-themes($my-theme);
 @include scoreboard.theme($my-theme);
 @include picColorCanvas.theme($my-theme);
+@include ngCamera.theme($my-theme);

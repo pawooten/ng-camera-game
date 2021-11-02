@@ -5,17 +5,9 @@
 .hidden {
     display:none;
 }
-
-.ng-camera__wrapper {
-    position:relative;
-    width:640px;
-    height:480px;
-}
 .ng-camera__button {
     padding: 15px 20px;
     box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2);
-    position: absolute;
-    bottom: 30px;
     left: calc(50% - 28px);
 }
 .ng-camera__button__image {
@@ -23,6 +15,13 @@
     position:relative;
     top:-17px;
     left:-7px;
+}
+.ng-camera__photo-reel {
+    z-index: 10;
+    max-width:100%;
+}
+.ng-camera__video {
+    width:100%;
 }
 .ng-camera__view-finder {
     width: 100px;
@@ -32,10 +31,6 @@
     top: calc(50% - 30px);
     border: 2px solid var(--accent-color);
 }
-.ng-camera__photo-reel {
-    position: absolute;
-    left:0px;
-    top:0px;
-    z-index: 10;
-    max-width:100%;
+.ng-camera__wrapper {
+    margin:10px;
 }
