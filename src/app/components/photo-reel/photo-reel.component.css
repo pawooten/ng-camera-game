@@ -1,18 +1,25 @@
-div {
-    margin:20px;
+.photo-reel__wrapper {
+    max-width: 100%;
+}
+.photo-reel__inner-wrapper {
+    width:100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    border: 2px solid rebeccapurple;
+    background-color: rebeccapurple;
 }
 ul {
     padding-left: 0px;
     list-style-type: none;
-    border: 2px solid rebeccapurple;
+    display: inline;
     white-space: nowrap;
-    background-color: rebeccapurple;
-    overflow:scroll;
-    width:100%
 }
 li {
-    display: inline-block;
+    display: inline;
     margin-right: 2px;
+}
+.photo-reel__image-wrapper {
+    display:inline-block;
 }
 img {
     width:128px;
