@@ -3,6 +3,7 @@
 }
 .photo-reel__inner-wrapper {
     width:100%;
+    min-height:102px;
     overflow-x: auto;
     overflow-y: hidden;
     border: 2px solid rebeccapurple;
