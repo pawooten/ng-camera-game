@@ -3,11 +3,9 @@
 }
 .photo-reel__inner-wrapper {
     width:100%;
-    min-height:102px;
+    min-height:108px;
     overflow-x: auto;
     overflow-y: hidden;
-    border: 2px solid rebeccapurple;
-    background-color: rebeccapurple;
 }
 ul {
     padding-left: 0px;
@@ -23,6 +21,8 @@ li {
     display:inline-block;
 }
 img {
+    margin-left:4px;
+    margin-top:6px;
     width:128px;
     border: solid 3px white;
     box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2);

@@ -1,5 +1,5 @@
 <div class="photo-reel__wrapper">
-    <div class="photo-reel__inner-wrapper">
+    <div class="photo-reel__inner-wrapper photo-reel__inner-wrapper--themed">
         <ul>
             <li *ngFor="let photoImageURL of photoImageURLs$ | async">
                 <div class="photo-reel__image-wrapper"><img src={{photoImageURL}} /></div>
