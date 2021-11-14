@@ -1,6 +1,3 @@
-:host {
-    max-width: 680px;
-}
 .mirrored {
     transform: scaleX(-1);
     filter: FlipH;
