@@ -1,14 +1,9 @@
-div {
-    max-width: 680px;
-    display: flex;
-    justify-content: center;
-}
-
 a {
     margin-right: 5px;
     font-family: Roboto;
     font-size: small;
 }
 .app-component__center-wrapper {
+    max-width: 680px;
     display: inline-block;
-} 
+}
