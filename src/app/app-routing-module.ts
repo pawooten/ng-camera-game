@@ -7,9 +7,9 @@ import { TitleComponent } from './components/title/title.component';
 const routes: Routes = [
     { path: '', component: TitleComponent },
     { path: 'options', component: OptionsPanelComponent },
-    { path: 'options', component: OptionsPanelComponent },
     { path: 'scoreboard', component: ScoreboardComponent },
-    { path: 'camera', component: NgCameraComponent }
+    { path: 'camera', component: NgCameraComponent },
+    { path: '*', component: TitleComponent }
 ];
 
 @NgModule({
