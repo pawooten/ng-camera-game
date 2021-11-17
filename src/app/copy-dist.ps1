@@ -1,0 +1,1 @@
+Copy-Item -Path ".\dist\ng-camera-game\*" -Destination "..\ng-camera-game-dist\" -Force
