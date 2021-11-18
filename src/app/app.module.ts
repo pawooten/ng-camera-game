@@ -32,7 +32,7 @@ import { environment } from 'src/environments/environment';
     MaterialModule,
     AppRoutingModule,
   ],
-  providers: [{provide: APP_BASE_HREF, useValue: environment.appBaseRef}],
+  providers: [{provide: APP_BASE_HREF, useValue: environment.appBaseHref}],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

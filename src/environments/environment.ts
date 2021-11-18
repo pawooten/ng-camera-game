@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  appBaseRef: 'ng-camera-game-dist/',
+  /* Specifies the base href of the app to initialize the Angular router */
+  appBaseHref: 'ng-camera-game-dist/',
 };
 
 /*
@@ -14,4 +15,4 @@ export const environment = {
  * This import should be commented out in production mode because it will have a negative impact
  * on performance if an error is thrown.
  */
-// import 'zone.js/plugins/zone-error';  // Included with Angular CLI.
+import 'zone.js/plugins/zone-error';  // Included with Angular CLI.
