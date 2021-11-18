@@ -12,6 +12,8 @@ import { TitleComponent } from './components/title/title.component';
 import { PhotoReelComponent } from './components/photo-reel/photo-reel.component';
 import { MaterialModule } from './shared/material.module';
 import { PicAssignmentResultViewerComponent } from './components/pic-assignment-result-viewer/pic-assignment-result-viewer.component';
+import { APP_BASE_HREF } from '@angular/common';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,7 @@ import { PicAssignmentResultViewerComponent } from './components/pic-assignment-
     MaterialModule,
     AppRoutingModule,
   ],
-  providers: [],
+  providers: [{provide: APP_BASE_HREF, useValue: environment.appBaseRef}],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
