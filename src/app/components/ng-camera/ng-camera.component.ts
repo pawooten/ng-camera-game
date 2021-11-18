@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { CameraSettings } from 'src/app/cameraSettings';
 import { PhotoService } from 'src/app/services/photo-service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-ng-camera',
@@ -8,6 +9,8 @@ import { PhotoService } from 'src/app/services/photo-service';
   styleUrls: ['./ng-camera.component.css']
 })
 export class NgCameraComponent implements OnInit {
+
+  appBaseHref = environment.appBaseHref;
 
   @ViewChild('cameraVideo') cameraVideo!: ElementRef<HTMLVideoElement>;
   @ViewChild('cameraCanvas') cameraCanvas!: ElementRef<HTMLCanvasElement>;
