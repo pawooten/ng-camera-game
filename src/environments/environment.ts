@@ -6,6 +6,8 @@ export const environment = {
   production: false,
   /* Specifies the base href of the app to initialize the Angular router */
   appBaseHref: '',
+  /* facingMode of the HTML camera: user | environment*/
+  facingMode: 'user',
 };
 
 /*

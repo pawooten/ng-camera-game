@@ -1,4 +1,6 @@
+import { environment } from "src/environments/environment";
+
 export const CameraSettings = {
-    video: { facingMode: "user" },
+    video: { facingMode: environment.facingMode },
     audio: false
 };
