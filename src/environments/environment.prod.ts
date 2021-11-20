@@ -4,4 +4,6 @@ export const environment = {
   appBaseHref: 'ng-camera-game-dist',
   /* facingMode of the HTML camera: user | environment*/
   facingMode: 'environment',
+  /* Default number of pics per round the player is assigned */
+  defaultPicsPerRound: 6,
 };

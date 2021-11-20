@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 import { Color } from '../interfaces/color';
+import { DefaultSettings } from '../interfaces/default-settings';
 import { PicColorState } from '../interfaces/pic-color-state';
 
 @Injectable({
@@ -21,5 +23,12 @@ export class OptionsService {
 
   getPicColorStates(): PicColorState[] {
     return this.picColorStates;
+  }
+
+  getDefaultSettings(): DefaultSettings {
+    return {
+      PicsPerRound: environment.defaultPicsPerRound,
+      FacingMode: environment.facingMode,
+    };
   }
 }

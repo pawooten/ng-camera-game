@@ -5,7 +5,7 @@
   <div class="options-panel__pics-per-round--wrapper options-panel__section-header">
     <div>
       <div>
-        <mat-slider min="1" max="10" step="1" value="10"></mat-slider>
+        <mat-slider min="1" max="10" step="1" value="{{picsPerRound$ | async}}"></mat-slider>
       </div>
       <div class="mat-slider-label">Pics per Round</div>
     </div>

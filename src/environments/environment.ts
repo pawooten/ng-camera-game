@@ -8,6 +8,8 @@ export const environment = {
   appBaseHref: '',
   /* facingMode of the HTML camera: user | environment*/
   facingMode: 'user',
+  /* Default number of pics per round the player is assigned */
+  defaultPicsPerRound: 8,
 };
 
 /*
