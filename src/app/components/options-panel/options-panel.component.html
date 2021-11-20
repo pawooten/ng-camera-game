@@ -1,9 +1,22 @@
 <div>
-  <h3>SETTINGS</h3>
-  <mat-slider min="1" max="100" step="10" value="100"></mat-slider>
-  <br />
-  <span class="mat-slider-label">Pics per Round</span>
-  <span>
+  <div class="options-panel__title options-panel__section-header">
+    <h3>SETTINGS</h3>
+  </div>
+  <div class="options-panel__pics-per-round--wrapper options-panel__section-header">
+    <div>
+      <div>
+        <mat-slider min="1" max="10" step="1" value="10"></mat-slider>
+      </div>
+      <div class="mat-slider-label">Pics per Round</div>
+    </div>
+  </div>
+  <div class="options-panel__camera-mode options-panel__section-header">
+    <mat-radio-group>      
+      <mat-radio-button class="selfie-mat-radio-button">Selfie</mat-radio-button>
+      <mat-radio-button>Photographer</mat-radio-button>
+    </mat-radio-group>        
+  </div>
+  <div class="options-panel__colors-panel options-panel__section-header">
     <ul>
       <li *ngFor="let picColor of picColors">
         <mat-slide-toggle
@@ -13,5 +26,5 @@
         <app-pic-color-canvas [PicColor]="picColor"></app-pic-color-canvas>
       </li>
     </ul>
-  </span>
+  </div>
 </div>

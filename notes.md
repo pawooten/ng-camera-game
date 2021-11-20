@@ -25,3 +25,6 @@ So I have to build with deploy-url instead of baseHref, because building with ba
 
 Building with environment-specified (for the sake of images) and deploy-url to fix the base-href problem seems like the best configuration so far.
 
+User / Environment
+User = Selfie View
+Environment = Photographer View
