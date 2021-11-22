@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { OptionsService } from 'src/app/services/options-service';
 import { PhotoService } from 'src/app/services/photo-service';
 import { environment } from 'src/environments/environment';
@@ -8,9 +8,11 @@ import { environment } from 'src/environments/environment';
   templateUrl: './ng-camera.component.html',
   styleUrls: ['./ng-camera.component.css']
 })
-export class NgCameraComponent implements OnInit {
+export class NgCameraComponent implements OnInit, OnDestroy {
 
   appBaseHref = environment.appBaseHref;
+
+  private cameraStream : MediaStream | null = null;
 
   @ViewChild('cameraVideo') cameraVideo!: ElementRef<HTMLVideoElement>;
   @ViewChild('cameraCanvas') cameraCanvas!: ElementRef<HTMLCanvasElement>;
@@ -25,8 +27,13 @@ export class NgCameraComponent implements OnInit {
     console.log(`initializing camera: ${JSON.stringify(cameraSettings)}`);
     navigator.mediaDevices.getUserMedia(cameraSettings)
       .then( stream => {
+        this.cameraStream = stream;
         this.cameraVideo.nativeElement.srcObject = stream;
-      })
+      });
+  }
+
+  ngOnDestroy() : void {
+    this.cameraStream?.getTracks().forEach(track => track.stop());
   }
 
   onButtonClicked() : void {
