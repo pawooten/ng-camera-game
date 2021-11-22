@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { CameraSettings } from 'src/app/cameraSettings';
+import { OptionsService } from 'src/app/services/options-service';
 import { PhotoService } from 'src/app/services/photo-service';
 import { environment } from 'src/environments/environment';
 
@@ -15,10 +15,14 @@ export class NgCameraComponent implements OnInit {
   @ViewChild('cameraVideo') cameraVideo!: ElementRef<HTMLVideoElement>;
   @ViewChild('cameraCanvas') cameraCanvas!: ElementRef<HTMLCanvasElement>;
 
-  constructor(private photoService: PhotoService) { }
+  constructor(private photoService: PhotoService, private optionsService: OptionsService) { }
 
   ngOnInit(): void {
-    navigator.mediaDevices.getUserMedia(CameraSettings)
+    let cameraSettings = {
+      video: { facingMode: this.optionsService.getFacingMode() },
+      audio: false,
+    };
+    navigator.mediaDevices.getUserMedia(cameraSettings)
       .then( stream => {
         var track = stream.getTracks()[0];
         this.cameraVideo.nativeElement.srcObject = stream;

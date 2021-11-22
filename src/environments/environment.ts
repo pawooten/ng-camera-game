@@ -7,7 +7,7 @@ export const environment = {
   /* Specifies the base href of the app to initialize the Angular router */
   appBaseHref: '',
   /* facingMode of the HTML camera: user | environment*/
-  facingMode: 'user',
+  defaultFacingMode: 'user',
   /* Default number of pics per round the player is assigned */
   defaultPicsPerRound: 8,
 };

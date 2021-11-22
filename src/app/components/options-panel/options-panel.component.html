@@ -12,8 +12,8 @@
   </div>
   <div class="options-panel__camera-mode options-panel__section-header">
     <mat-radio-group [(ngModel)]="facingMode">      
-      <mat-radio-button class="selfie-mat-radio-button" [value]="selfieFacingMode">Selfie</mat-radio-button>
-      <mat-radio-button [value]="photographerFacingMode">Photographer</mat-radio-button>
+      <mat-radio-button class="selfie-mat-radio-button" [value]="selfieFacingMode" (change)="onFacingModeChange(selfieFacingMode)">Selfie</mat-radio-button>
+      <mat-radio-button [value]="photographerFacingMode" (change)="onFacingModeChange(photographerFacingMode)">Photographer</mat-radio-button>
     </mat-radio-group>        
   </div>
   <div class="options-panel__colors-panel options-panel__section-header">

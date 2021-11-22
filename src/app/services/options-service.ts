@@ -8,6 +8,15 @@ import { PicColorState } from '../interfaces/pic-color-state';
   providedIn: 'root',
 })
 export class OptionsService {
+
+  constructor() {
+    this.facingMode = environment.defaultFacingMode;
+    this.picsPerRound = environment.defaultPicsPerRound;
+  }
+
+  private facingMode: string;
+  private picsPerRound: number;
+
   readonly picColorStates = [
     { Label: 'Red', Value: new Color(255, 0, 0), Enabled: true },
     { Label: 'Green', Value: new Color(0, 128, 0), Enabled: true },
@@ -25,10 +34,19 @@ export class OptionsService {
     return this.picColorStates;
   }
 
-  getDefaultSettings(): DefaultSettings {
-    return {
-      PicsPerRound: environment.defaultPicsPerRound,
-      FacingMode: environment.facingMode,
-    };
+  getFacingMode() : string {
+    return this.facingMode;
+  }
+  setFacingMode(facingMode: string) : void {
+    this.facingMode = facingMode;
+    console.log(`facing mode ${facingMode}`);
+  }
+
+  getPicsPerRound() : number {
+    return this.picsPerRound;
+  }
+  setPicsPerRound(picsPerRound: number) : void {
+    this.picsPerRound = picsPerRound;
+    console.log(`pics per roudn ${picsPerRound}`);
   }
 }

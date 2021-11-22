@@ -21,12 +21,19 @@ export class OptionsPanelComponent implements OnInit {
   picColors: PicColorState[] = [];
 
   constructor(private optionsService: OptionsService) {
-    let defaultSettings = optionsService.getDefaultSettings();
-    this.picsPerRound = defaultSettings.PicsPerRound;
-    this.facingMode = defaultSettings.FacingMode;
+    this.picsPerRound = optionsService.getPicsPerRound();
+    this.facingMode = optionsService.getFacingMode();
   }
 
   ngOnInit(): void {
     this.picColors = this.optionsService.getPicColorStates();
+  }
+
+  onFacingModeChange(facingMode: string) : void {
+    this.optionsService.setFacingMode(facingMode);
+  }
+
+  onPicsPerRoundChange(picsPerRound: number) : void {
+    this.optionsService.setPicsPerRound(picsPerRound);
   }
 }
