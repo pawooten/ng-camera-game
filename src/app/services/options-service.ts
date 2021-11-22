@@ -39,7 +39,6 @@ export class OptionsService {
   }
   setFacingMode(facingMode: string) : void {
     this.facingMode = facingMode;
-    console.log(`facing mode ${facingMode}`);
   }
 
   getPicsPerRound() : number {
@@ -47,6 +46,5 @@ export class OptionsService {
   }
   setPicsPerRound(picsPerRound: number) : void {
     this.picsPerRound = picsPerRound;
-    console.log(`pics per roudn ${picsPerRound}`);
   }
 }

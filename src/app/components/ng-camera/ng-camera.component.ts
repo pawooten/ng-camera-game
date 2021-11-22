@@ -22,9 +22,9 @@ export class NgCameraComponent implements OnInit {
       video: { facingMode: this.optionsService.getFacingMode() },
       audio: false,
     };
+    console.log(`initializing camera: ${JSON.stringify(cameraSettings)}`);
     navigator.mediaDevices.getUserMedia(cameraSettings)
       .then( stream => {
-        var track = stream.getTracks()[0];
         this.cameraVideo.nativeElement.srcObject = stream;
       })
   }
