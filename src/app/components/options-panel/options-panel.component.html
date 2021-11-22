@@ -5,15 +5,15 @@
   <div class="options-panel__pics-per-round--wrapper options-panel__section-header">
     <div>
       <div>
-        <mat-slider min="1" max="10" step="1" value="{{picsPerRound$ | async}}"></mat-slider>
+        <mat-slider min="1" max="10" step="1" value="{{picsPerRound}}"></mat-slider>
       </div>
       <div class="mat-slider-label">Pics per Round</div>
     </div>
   </div>
   <div class="options-panel__camera-mode options-panel__section-header">
-    <mat-radio-group>      
-      <mat-radio-button class="selfie-mat-radio-button">Selfie</mat-radio-button>
-      <mat-radio-button>Photographer</mat-radio-button>
+    <mat-radio-group [(ngModel)]="facingMode">      
+      <mat-radio-button class="selfie-mat-radio-button" [value]="selfieFacingMode">Selfie</mat-radio-button>
+      <mat-radio-button [value]="photographerFacingMode">Photographer</mat-radio-button>
     </mat-radio-group>        
   </div>
   <div class="options-panel__colors-panel options-panel__section-header">

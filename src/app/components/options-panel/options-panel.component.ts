@@ -10,24 +10,20 @@ import { BehaviorSubject, Observable } from 'rxjs';
   styleUrls: ['./options-panel.component.css'],
 })
 export class OptionsPanelComponent implements OnInit {
+  selfieFacingMode = 'user';
+  photographerFacingMode = 'environment';
 
   primaryThemeColor: ThemePalette = 'primary';
 
-  private picsPerRoundBehaviorSubject: BehaviorSubject<number>;
-  picsPerRound$: Observable<number>;
-
-  private facingModeBehaviorSubject: BehaviorSubject<string>;
-  facingMode$: Observable<string>;
+  picsPerRound: number;
+  facingMode: string;
 
   picColors: PicColorState[] = [];
 
   constructor(private optionsService: OptionsService) {
     let defaultSettings = optionsService.getDefaultSettings();
-    this.picsPerRoundBehaviorSubject = new BehaviorSubject(defaultSettings.PicsPerRound);
-    this.picsPerRound$ = this.picsPerRoundBehaviorSubject.asObservable();
-
-    this.facingModeBehaviorSubject = new BehaviorSubject<string>(defaultSettings.FacingMode);
-    this.facingMode$ = this.facingModeBehaviorSubject.asObservable();
+    this.picsPerRound = defaultSettings.PicsPerRound;
+    this.facingMode = defaultSettings.FacingMode;
   }
 
   ngOnInit(): void {

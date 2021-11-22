@@ -5,6 +5,7 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatRadioModule } from '@angular/material/radio';
+import { FormsModule } from '@angular/forms';
 /**
  * NgModule that includes all Material modules.
  */
@@ -15,7 +16,8 @@ import { MatRadioModule } from '@angular/material/radio';
     MatSlideToggleModule,
     MatSnackBarModule,
     MatGridListModule,
-    MatRadioModule
+    MatRadioModule,
+    FormsModule,
   ],
 })
 export class MaterialModule {}
