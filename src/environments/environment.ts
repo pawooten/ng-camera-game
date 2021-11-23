@@ -3,6 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
+  appVersion: require('../../package.json').version,
+  appTitle: 'Camera Color Match',
   production: false,
   /* Specifies the base href of the app to initialize the Angular router */
   appBaseHref: '',

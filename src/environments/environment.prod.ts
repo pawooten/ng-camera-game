@@ -1,4 +1,6 @@
 export const environment = {
+  appVersion: require('../../package.json').version,
+  appTitle: 'Camera Color Match - Dev',
   production: true,
   /* Specifies the base href of the app to initialize the Angular router */
   appBaseHref: 'ng-camera-game-dist',
