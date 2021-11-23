@@ -1,6 +1,9 @@
 :host {
     max-width: 680px;
 }
-img {
-    max-width: inherit;
+.title__text-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top:80px;
 }

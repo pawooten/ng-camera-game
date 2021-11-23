@@ -9,6 +9,9 @@ import { environment } from 'src/environments/environment';
 export class TitleComponent implements OnInit {
 
   appBaseHref = environment.appBaseHref;
+  title = environment.appTitle;
+  version = environment.appVersion;
+  copyrightText = `Copyright ${environment.appAuthor} 2021`;
   
   // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
   ngOnInit(): void {
