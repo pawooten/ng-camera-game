@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { LoggingService } from 'src/app/services/logging-service';
 import { OptionsService } from 'src/app/services/options-service';
 import { PhotoService } from 'src/app/services/photo-service';
 import { environment } from 'src/environments/environment';
@@ -17,14 +18,17 @@ export class NgCameraComponent implements OnInit, OnDestroy {
   @ViewChild('cameraVideo') cameraVideo!: ElementRef<HTMLVideoElement>;
   @ViewChild('cameraCanvas') cameraCanvas!: ElementRef<HTMLCanvasElement>;
 
-  constructor(private photoService: PhotoService, private optionsService: OptionsService) { }
+  constructor(
+    private photoService: PhotoService,
+    private optionsService: OptionsService,
+    private loggingService: LoggingService,) { }
 
   ngOnInit(): void {
     let cameraSettings = {
       video: { facingMode: this.optionsService.getFacingMode() },
       audio: false,
     };
-    console.log(`initializing camera: ${JSON.stringify(cameraSettings)}`);
+    this.loggingService.log(`initializing camera: ${JSON.stringify(cameraSettings)}`);
     navigator.mediaDevices.getUserMedia(cameraSettings)
       .then( stream => {
         this.cameraStream = stream;

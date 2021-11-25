@@ -7,6 +7,8 @@ export const environment = {
   appTitle: 'Camera Color Match - Dev',
   appAuthor: require('../../package.json').author.name,
   production: false,
+  /* Enables diagnostic browser console logging, regardless of production state. Logging is enabled automatically when !production */
+  enableConsoleLogging: true, // should be ignored because production: false
   /* Specifies the base href of the app to initialize the Angular router */
   appBaseHref: '',
   /* facingMode of the HTML camera: user | environment*/
