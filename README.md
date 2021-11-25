@@ -1,4 +1,9 @@
-# NgCameraGame
+# Camera Color Match
+
+The player is assigned a series of target colors for each instance of the game. The goal of the game is to take a photo whose
+primary color matches closely to the target color.
+
+[Check out the distributon](https://pawooten.github.io/ng-camera-game-dist/)
 
 ## Types Overview
 
