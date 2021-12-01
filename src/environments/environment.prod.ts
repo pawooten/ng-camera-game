@@ -11,4 +11,6 @@ export const environment = {
   defaultFacingMode: 'environment',
   /* Default number of pics per round the player is assigned */
   defaultPicsPerRound: 6,
+    /* Default display duration for notifications in milliseconds */
+    defaultNotificationDuration: 1000,
 };

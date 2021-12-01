@@ -2,23 +2,24 @@ import { Injectable } from '@angular/core';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { PicAssignmentResultViewerComponent } from '../components/pic-assignment-result-viewer/pic-assignment-result-viewer.component';
 import { PicAssignmentResult } from '../interfaces/pic-assignment-result';
+import { OptionsService } from './options-service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NotificationService {
   
-  constructor(private snackBar: MatSnackBar) {}
+  constructor(private snackBar: MatSnackBar, private optionsService: OptionsService) {}
 
-  showNotificationMessage(message: string) : void {
+  showTextNotification(message: string) : void {
       this.snackBar.open(message);
   }
-  showPicAssignmentNotification(assignmentResult: PicAssignmentResult) : void {
+  showNotification(assignmentResult: PicAssignmentResult) : void {
     if (!assignmentResult) {
       return;
     }
     let options: MatSnackBarConfig = {
-      duration: 400,
+      duration: this.optionsService.getNotificationDuration(),
       data: JSON.stringify(assignmentResult)
     };
     this.snackBar.openFromComponent(PicAssignmentResultViewerComponent,      

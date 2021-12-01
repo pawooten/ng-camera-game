@@ -23,7 +23,7 @@ export class Game {
   examineColor(color: Color): void {
     color.debug();
     const result = this.evaluateSubmission(this.composeSubmission(color));
-    this.notificationService.showPicAssignmentNotification(result);
+    this.notificationService.showNotification(result);
     this.assignmentResults.push(result);
     this.publishAssignmentResults();
     this.index += 1;

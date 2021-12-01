@@ -12,10 +12,12 @@ export class OptionsService {
   constructor() {
     this.facingMode = environment.defaultFacingMode;
     this.picsPerRound = environment.defaultPicsPerRound;
+    this.notificationDuration = environment.defaultNotificationDuration;
   }
 
   private facingMode: string;
   private picsPerRound: number;
+  private notificationDuration: number;
 
   readonly picColorStates = [
     { Label: 'Red', Value: new Color(255, 0, 0), Enabled: true },
@@ -46,5 +48,12 @@ export class OptionsService {
   }
   setPicsPerRound(picsPerRound: number) : void {
     this.picsPerRound = picsPerRound;
+  }
+
+  getNotificationDuration(): number {
+    return this.notificationDuration;
+  }
+  setNotificationDuration(notificationDuration: number) : void {
+    this.notificationDuration = notificationDuration;
   }
 }
