@@ -1,22 +1,31 @@
 <div>
-  <div class="options-panel__title options-panel__section-header">
+  <div class="options-panel__section">
     <h3>SETTINGS</h3>
   </div>
-  <div class="options-panel__pics-per-round--wrapper options-panel__section-header">
+  <div class="options-panel__section">
     <div>
       <div>
-        <mat-slider min="1" max="10" step="1" value="{{picsPerRound}}"></mat-slider>
+        <mat-slider min="1" max="10" step="1" value="{{picsPerRound}}" (input)="onPicsPerRoundChange($event)"></mat-slider>
       </div>
-      <div class="mat-slider-label">Pics per Round</div>
+      <div class="options-panel__section-label">Pics per Round</div>
     </div>
   </div>
-  <div class="options-panel__camera-mode options-panel__section-header">
+  <div class="options-panel__section">
+    <div>
+      <div>
+        <mat-slider min="1" max="100" step="1" value="{{notificationDuration}}" (input)="onNotificationDurationChange($event)"></mat-slider>
+      </div>
+      <div class="options-panel__section-label">Notification Duration</div>
+    </div>
+  </div>  
+  <div class="options-panel__section">
     <mat-radio-group [(ngModel)]="facingMode">      
       <mat-radio-button class="selfie-mat-radio-button" [value]="selfieFacingMode" (change)="onFacingModeChange(selfieFacingMode)">Selfie</mat-radio-button>
       <mat-radio-button [value]="photographerFacingMode" (change)="onFacingModeChange(photographerFacingMode)">Photographer</mat-radio-button>
-    </mat-radio-group>        
+      <div class="options-panel__section-label">Camera Mode</div>
+    </mat-radio-group>
   </div>
-  <div class="options-panel__colors-panel options-panel__section-header">
+  <div class="options-panel__section">
     <ul>
       <li *ngFor="let picColor of picColors">
         <mat-slide-toggle
