@@ -12,14 +12,9 @@ ul {
     list-style: none;
 }
 .options-panel__section {
-    border-bottom: 1px solid black;
     display: flex;
     justify-content:center;
-}
-.options-panel__section-label {
-    font-size: small;
-    display: flex;
-    justify-content: center;
+    margin: 5px;
 }
 mat-slide-toggle {
     margin-left:-8px;
@@ -30,4 +25,15 @@ mat-radio-button {
 }
 .selfie-mat-radio-button {
     margin-right:10px;
+}
+.options-panel__container {
+    background-color: rebeccapurple;
+}
+.options-panel__section-wrapper {
+    display: inline-grid;
+}
+
+mat-card {
+    max-height: 300px;
+    overflow-y:auto;
 }

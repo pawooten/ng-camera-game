@@ -1,31 +1,27 @@
-<div>
-  <div class="options-panel__section">
+<div class="options-panel__container">
+  <mat-card class="options-panel__section">
     <h3>SETTINGS</h3>
-  </div>
-  <div class="options-panel__section">
-    <div>
-      <div>
-        <mat-slider min="1" max="10" step="1" value="{{picsPerRound}}" (input)="onPicsPerRoundChange($event)"></mat-slider>
-      </div>
-      <div class="options-panel__section-label">Pics per Round</div>
+  </mat-card>
+  <mat-card class="options-panel__section">
+    <div class="options-panel__section-wrapper">
+      <mat-slider min="1" max="10" step="1" value="{{picsPerRound}}" (input)="onPicsPerRoundChange($event)"></mat-slider>
+      <mat-card-title>Pics per Round</mat-card-title>
     </div>
-  </div>
-  <div class="options-panel__section">
-    <div>
-      <div>
-        <mat-slider min="1" max="100" step="1" value="{{notificationDuration}}" (input)="onNotificationDurationChange($event)"></mat-slider>
-      </div>
-      <div class="options-panel__section-label">Notification Duration</div>
+  </mat-card>
+  <mat-card class="options-panel__section">
+    <div class="options-panel__section-wrapper">
+      <mat-slider min="1" max="100" step="1" value="{{notificationDuration}}" (input)="onNotificationDurationChange($event)"></mat-slider>
+      <mat-card-title>Notification Duration</mat-card-title>  
     </div>
-  </div>  
-  <div class="options-panel__section">
+  </mat-card>
+  <mat-card class="options-panel__section">
     <mat-radio-group [(ngModel)]="facingMode">      
       <mat-radio-button class="selfie-mat-radio-button" [value]="selfieFacingMode" (change)="onFacingModeChange(selfieFacingMode)">Selfie</mat-radio-button>
       <mat-radio-button [value]="photographerFacingMode" (change)="onFacingModeChange(photographerFacingMode)">Photographer</mat-radio-button>
-      <div class="options-panel__section-label">Camera Mode</div>
+      <mat-card-title>Camera Mode</mat-card-title> 
     </mat-radio-group>
-  </div>
-  <div class="options-panel__section">
+  </mat-card>
+  <mat-card class="options-panel__section">
     <ul>
       <li *ngFor="let picColor of picColors">
         <mat-slide-toggle
@@ -35,5 +31,5 @@
         <app-pic-color-canvas [PicColor]="picColor"></app-pic-color-canvas>
       </li>
     </ul>
-  </div>
+  </mat-card>
 </div>
