@@ -22,14 +22,14 @@
     </mat-radio-group>
   </mat-card>
   <mat-card class="options-panel__section">
-    <ul>
-      <li *ngFor="let picColor of picColors">
+    <mat-chip-list class="mat-chip-list-stacked">
+      <mat-chip *ngFor="let picColor of picColors">
         <mat-slide-toggle
           [color]="primaryThemeColor"
           [checked]="picColor.Enabled"
         ></mat-slide-toggle>
         <app-pic-color-canvas [PicColor]="picColor"></app-pic-color-canvas>
-      </li>
-    </ul>
+      </mat-chip>
+    </mat-chip-list>
   </mat-card>
 </div>
