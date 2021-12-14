@@ -1,6 +1,6 @@
 {
   "name": "ng-camera-game",
-  "version": "0.0.0.5-mat-chips-option-panel",
+  "version": "0.0.0.6-mat-chips-option-panel",
   "author": { "name": "Paul Wooten", "email": "pawooten@gmail.com" },
   "scripts": {
     "ng": "ng",
