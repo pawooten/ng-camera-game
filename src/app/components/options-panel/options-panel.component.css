@@ -29,9 +29,6 @@ mat-radio-button {
 .options-panel__container {
     background-color: rebeccapurple;
 }
-.options-panel__section-wrapper {
-    display: inline-grid;
-}
 mat-card {
     max-height: 300px;
     overflow-y:auto;
