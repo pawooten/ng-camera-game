@@ -1,18 +1,22 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Color } from '../interfaces/color';
-import { DefaultSettings } from '../interfaces/default-settings';
 import { PicColorState } from '../interfaces/pic-color-state';
+import { LoggingService } from './logging-service';
+import { StorageService, StorageKey } from './storage-service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class OptionsService {
 
-  constructor() {
+  private readonly MINIMUM_NOTIFICATION_DURATION = 100;
+  private readonly MAXIMUM_NOTIFICATION_DURATION = 2000;
+
+  constructor(private loggingService: LoggingService, private storageService: StorageService) {
     this.facingMode = environment.defaultFacingMode;
     this.picsPerRound = environment.defaultPicsPerRound;
-    this.notificationDuration = environment.defaultNotificationDuration;
+    this.notificationDuration = this.getInitialNotificationDuration();
   }
 
   private facingMode: string;
@@ -31,6 +35,25 @@ export class OptionsService {
     { Label: 'Black', Value: new Color(0, 0, 0), Enabled: true },
     { Label: 'Purple', Value: new Color(128, 0, 128), Enabled: true },
   ];
+
+  private getInitialNotificationDuration() : number {
+    const localStorageNotificationDuration = this.storageService.get(StorageKey[StorageKey.NotificationDuration]);
+    if (localStorageNotificationDuration) {
+      var notificationDuration = +localStorageNotificationDuration;
+      if (notificationDuration >= this.MINIMUM_NOTIFICATION_DURATION &&
+          notificationDuration <= this.MAXIMUM_NOTIFICATION_DURATION) {
+            this.loggingService.log(`Local storage notification duration loaded (${notificationDuration})`);            
+            return notificationDuration; // We've loaded a valid notificationDuration from local storage, we're done
+      }
+      else {
+        this.loggingService.log(`Invalid notification duration loaded (${notificationDuration})`);
+      }
+    }
+
+    // No luck in local storage
+    this.loggingService.log(`Default notification duration loaded (${environment.defaultNotificationDuration})`);
+    return environment.defaultNotificationDuration;
+  }
 
   getPicColorStates(): PicColorState[] {
     return this.picColorStates;
@@ -55,5 +78,7 @@ export class OptionsService {
   }
   setNotificationDuration(notificationDuration: number) : void {
     this.notificationDuration = notificationDuration;
+    this.storageService.set(StorageKey[StorageKey.NotificationDuration], notificationDuration);
+    this.loggingService.log(`NotificationDuration (${notificationDuration}) stored.`);
   }
 }
