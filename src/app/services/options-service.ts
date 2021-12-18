@@ -80,6 +80,27 @@ export class OptionsService {
     return environment.defaultPicsPerRound;
   }
 
+  private getSettingsBoundsByStorageKey() : { [key: string]: {Min: number, Max:number}} {
+    const lookup: { [key: string]: {Min: number, Max:number}} = {};
+    lookup[StorageKey[StorageKey.NotificationDuration]] = { Min: this.MINIMUM_NOTIFICATION_DURATION, Max: this.MAXIMUM_NOTIFICATION_DURATION};
+    return lookup;
+  }
+
+  private settingsByStorageKey : { [key: string]: {Min: number, Max:number}} = {
+    'NotificationDuration' : { Min: 4, Max: 400 },
+    'PicsPerRound' : { Min: 2, Max: 10 }
+  };
+
+  private getInitialNumericSetting(storageKey: StorageKey) {
+    const localStorageValue = this.storageService.get(StorageKey[storageKey]);
+    if (localStorageValue) {
+      this.loggingService.log(`Local storage ${StorageKey[storageKey]} loaded ${localStorageValue}`);
+      const value = +localStorageValue;
+      // const validationResult = this.inBounds(value, )
+    }
+  }
+
+
   private inBounds(value: number, minimum: number, maximum: number) : { errorMessage?: string, valid:boolean } {
     const result = { valid: false, errorMessage: ''};
     if (!minimum || !maximum) {
