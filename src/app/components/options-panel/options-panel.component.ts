@@ -14,6 +14,8 @@ export class OptionsPanelComponent implements OnInit {
 
   private readonly MILLISECONDS_PER_SLIDER_TICK = 20;
 
+  maximumPicsPerRound: number;
+
   selfieFacingMode = 'user';
   photographerFacingMode = 'environment';
 
@@ -26,6 +28,7 @@ export class OptionsPanelComponent implements OnInit {
   picColors: PicColorState[] = [];
 
   constructor(private optionsService: OptionsService) {
+    this.maximumPicsPerRound = optionsService.MAXIMUM_PICS_PER_ROUND;
     this.picsPerRound = optionsService.getPicsPerRound();
     this.notificationDuration = this.convertToSliderTicks(optionsService.getNotificationDuration());
     this.facingMode = optionsService.getFacingMode();

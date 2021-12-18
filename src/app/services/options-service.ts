@@ -12,10 +12,13 @@ export class OptionsService {
 
   private readonly MINIMUM_NOTIFICATION_DURATION = 100;
   private readonly MAXIMUM_NOTIFICATION_DURATION = 2000;
+  private readonly MINIMUM_PICS_PER_ROUND = 1;
+  public readonly MAXIMUM_PICS_PER_ROUND = 16;
+
 
   constructor(private loggingService: LoggingService, private storageService: StorageService) {
     this.facingMode = environment.defaultFacingMode;
-    this.picsPerRound = environment.defaultPicsPerRound;
+    this.picsPerRound = this.getInitialPicsPerRound();
     this.notificationDuration = this.getInitialNotificationDuration();
   }
 
@@ -55,6 +58,40 @@ export class OptionsService {
     return environment.defaultNotificationDuration;
   }
 
+  private getInitialPicsPerRound() : number {
+    const localStoragePicsPerRound = this.storageService.get(StorageKey[StorageKey.PicsPerRound]);
+    if (localStoragePicsPerRound) {
+      this.loggingService.log(`Local storage pics per round loaded (${localStoragePicsPerRound})`);
+      const picsPerRound = +localStoragePicsPerRound;
+      const validationResult = this.inBounds(picsPerRound, this.MINIMUM_PICS_PER_ROUND, this.MAXIMUM_PICS_PER_ROUND);
+      if ( validationResult.valid) {
+        this.loggingService.log(`Local storage pics per round validated (${picsPerRound})`);
+        return picsPerRound; // We've loaded a valid picsPerRound from local storage, we're done
+      } else {
+        this.loggingService.log(`Local storage pics per round invalid. (${picsPerRound})`);
+      }
+      if (validationResult.errorMessage) {
+        this.loggingService.log(`Invalid pics per round loaded (${picsPerRound})`);
+      }
+    }
+
+    // Either no PicsPerRound was found in local storage, or the value which was found is invalid
+    this.loggingService.log(`Default pics per round loaded (${environment.defaultPicsPerRound})`);
+    return environment.defaultPicsPerRound;
+  }
+
+  private inBounds(value: number, minimum: number, maximum: number) : { errorMessage?: string, valid:boolean } {
+    const result = { valid: false, errorMessage: ''};
+    if (!minimum || !maximum) {
+      result.errorMessage = `inBounds Null constraint(s) received. Min ${minimum} Max ${maximum}`;
+    }
+    if (minimum > maximum) {
+      result.errorMessage = `inBounds mismatched constraints, Min > Max. Min ${minimum} Max ${maximum}`;
+    }
+    result.valid = value >= minimum && value <= maximum;
+    return result;
+  }
+
   getPicColorStates(): PicColorState[] {
     return this.picColorStates;
   }
@@ -71,6 +108,8 @@ export class OptionsService {
   }
   setPicsPerRound(picsPerRound: number) : void {
     this.picsPerRound = picsPerRound;
+    this.storageService.set(StorageKey[StorageKey.PicsPerRound], picsPerRound);
+    this.loggingService.log(`Pics per Round (${picsPerRound}) stored.`);
   }
 
   getNotificationDuration(): number {
