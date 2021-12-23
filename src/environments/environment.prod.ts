@@ -9,8 +9,20 @@ export const environment = {
   appBaseHref: 'ng-camera-game-dist/',
   /* facingMode of the HTML camera: user | environment*/
   defaultFacingMode: 'environment',
-  /* Default number of pics per round the player is assigned */
-  defaultPicsPerRound: 6,
+
+  NotificationDurationConfig: {
     /* Default display duration for notifications in milliseconds */
-    defaultNotificationDuration: 1000,
+    Default: 1000,
+    /* Minimum notification duration the player may specify */
+    Min: 400,
+    /* Maximum notification duration the player may specify */
+    Max: 2000  },
+  PicsPerRoundConfig: {
+    /* Default number of pics per round the player is assigned */
+    Default: 6,
+    /* Minimum number of pics per round the player may specify */
+    Min: 1,
+    /* Maximum number of pics per round the player may specify */
+    Max: 16
+  }
 };

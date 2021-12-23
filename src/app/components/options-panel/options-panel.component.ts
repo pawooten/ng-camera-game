@@ -4,6 +4,7 @@ import { ThemePalette } from '@angular/material/core';
 import { PicColorState } from 'src/app/interfaces/pic-color-state';
 import { ArgumentOutOfRangeError, BehaviorSubject, Observable } from 'rxjs';
 import { MatSliderChange } from '@angular/material/slider';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-options-panel',
@@ -28,7 +29,7 @@ export class OptionsPanelComponent implements OnInit {
   picColors: PicColorState[] = [];
 
   constructor(private optionsService: OptionsService) {
-    this.maximumPicsPerRound = optionsService.MAXIMUM_PICS_PER_ROUND;
+    this.maximumPicsPerRound = environment.PicsPerRoundConfig.Max;
     this.picsPerRound = optionsService.getPicsPerRound();
     this.notificationDuration = this.convertToSliderTicks(optionsService.getNotificationDuration());
     this.facingMode = optionsService.getFacingMode();

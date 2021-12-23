@@ -13,10 +13,22 @@ export const environment = {
   appBaseHref: '',
   /* facingMode of the HTML camera: user | environment*/
   defaultFacingMode: 'user',
-  /* Default number of pics per round the player is assigned */
-  defaultPicsPerRound: 8,
-  /* Default display duration for notifications in milliseconds */
-  defaultNotificationDuration: 600,
+  
+  NotificationDurationConfig: {
+    /* Default display duration for notifications in milliseconds */
+    Default: 600,
+    /* Minimum notification duration the player may specify */
+    Min: 400,
+    /* Maximum notification duration the player may specify */
+    Max: 2000  },
+  PicsPerRoundConfig: {
+    /* Default number of pics per round the player is assigned */
+    Default: 8,
+    /* Minimum number of pics per round the player may specify */
+    Min: 1,
+    /* Maximum number of pics per round the player may specify */
+    Max: 16
+  }
 };
 
 /*

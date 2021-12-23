@@ -14,19 +14,14 @@ export class OptionsService {
   private picsPerRound: number;
   private notificationDuration: number;
 
-  private readonly MINIMUM_NOTIFICATION_DURATION = 400;
-  private readonly MAXIMUM_NOTIFICATION_DURATION = 2000;
-  private readonly MINIMUM_PICS_PER_ROUND = 1;
-  public readonly MAXIMUM_PICS_PER_ROUND = 16;
-
   private readonly settingBoundsByStorageKey : { [key in StorageKey]: {Min: number, Max:number}} = {
-    [StorageKey.NotificationDuration]: { Min: this.MINIMUM_NOTIFICATION_DURATION, Max: this.MAXIMUM_NOTIFICATION_DURATION },
-    [StorageKey.PicsPerRound]:  { Min: this.MINIMUM_PICS_PER_ROUND, Max: this.MAXIMUM_PICS_PER_ROUND },
+    [StorageKey.NotificationDuration]: environment.NotificationDurationConfig,
+    [StorageKey.PicsPerRound]: environment.PicsPerRoundConfig,
   };
 
   private readonly settingDefaultsByStorageKey : { [key in StorageKey]: number } = {
-    [StorageKey.NotificationDuration]: environment.defaultNotificationDuration,
-    [StorageKey.PicsPerRound]: environment.defaultPicsPerRound
+    [StorageKey.NotificationDuration]: environment.NotificationDurationConfig.Default,
+    [StorageKey.PicsPerRound]: environment.PicsPerRoundConfig.Default,
   };
 
   constructor(private loggingService: LoggingService, private storageService: StorageService) {
