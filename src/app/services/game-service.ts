@@ -8,6 +8,7 @@ import { PicColorState } from '../interfaces/pic-color-state';
 import { PicAssignment } from '../interfaces/pic-assignment';
 import { PicAssignmentResult } from '../interfaces/pic-assignment-result';
 import { Observable } from 'rxjs';
+import { LoggingService } from './logging-service';
 
 @Injectable({
   providedIn: 'root',
@@ -16,10 +17,12 @@ export class GameService {
   private game: Game;
   constructor(
     private notificationService: NotificationService,
+    private logginService: LoggingService,
     private optionsService: OptionsService
   ) {
     this.game = new Game(
       this.notificationService,
+      this.logginService,
       this.initializePicAssignments(this.optionsService.getPicColorStates())
     );
   }

@@ -4,6 +4,7 @@ import { PicAssignmentResult } from './pic-assignment-result';
 import { PicAssignmentSubmission } from './pic-assignment-submission';
 import { NotificationService } from '../services/notification-service';
 import { Observable, ReplaySubject } from 'rxjs';
+import { LoggingService } from '../services/logging-service';
 /*
  * A Game is composed of a set of picAssignments the player must match.
  */
@@ -17,18 +18,20 @@ export class Game {
 
   constructor(
     private readonly notificationService: NotificationService,
+    private readonly loggingService: LoggingService,
     private readonly picAssignments: PicAssignment[]
   ) {}
 
   examineColor(color: Color): void {
-    color.debug();
+    this.loggingService.logColor(color);
     const result = this.evaluateSubmission(this.composeSubmission(color));
     this.notificationService.showNotification(result);
     this.assignmentResults.push(result);
     this.publishAssignmentResults();
     this.index += 1;
+    this.loggingService.log(`Level ${this.index} of ${this.picAssignments.length} reached.`);
     if (this.picAssignments.length == this.index) {
-      // hooray, you won
+      this.loggingService.log(`Hooray, you won!`);
       this.index = 0; // loop back around
     }
   }
