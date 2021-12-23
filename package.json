@@ -1,6 +1,6 @@
 {
   "name": "ng-camera-game",
-  "version": "0.0.0.7-save-notification-duration",
+  "version": "0.0.0.8-configurable-bounds",
   "author": { "name": "Paul Wooten", "email": "pawooten@gmail.com" },
   "scripts": {
     "ng": "ng",
