@@ -7,7 +7,13 @@ a {
     display: inline-block;
     max-width: 664px;
 }
-
+.app-component__version-div {
+    display: inline-block;
+    text-overflow: ellipsis;
+    overflow:hidden;
+    white-space: nowrap;
+    max-width: 160px;
+}
 @media only screen and (max-width: 411px) {
     .app-component__center-wrapper {
         max-width: 411px;

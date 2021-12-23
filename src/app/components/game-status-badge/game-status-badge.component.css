@@ -1,0 +1,7 @@
+.game-status-badge__wrapper {
+    display: flex;
+    float:right;
+}
+.game-status-badge__wrapper > span {
+    margin-right: 20px;
+}

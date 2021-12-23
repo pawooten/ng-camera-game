@@ -14,6 +14,7 @@ import { MaterialModule } from './shared/material.module';
 import { PicAssignmentResultViewerComponent } from './components/pic-assignment-result-viewer/pic-assignment-result-viewer.component';
 import { APP_BASE_HREF } from '@angular/common';
 import { environment } from 'src/environments/environment';
+import { GameStatusBadgeComponent } from './components/game-status-badge/game-status-badge.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { environment } from 'src/environments/environment';
     TitleComponent,
     PhotoReelComponent,
     PicAssignmentResultViewerComponent,
+    GameStatusBadgeComponent,
   ],
   imports: [
     BrowserModule,

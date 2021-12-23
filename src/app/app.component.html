@@ -4,7 +4,8 @@
     <a routerLink="/options" routerLinkActive="active">Options</a>
     <a routerLink="/scoreboard" routerLinkActive="active">Scoreboard</a>
     <a routerLink="/camera" routerLinkActive="active">Camera</a>
-    <span>({{version}})</span>
+    <div class="app-component__version-div">({{version}})</div>
+    <app-game-status-badge></app-game-status-badge>
   </nav>
   <div>
     <router-outlet></router-outlet>
