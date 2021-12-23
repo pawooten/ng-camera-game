@@ -10,21 +10,30 @@ import { StorageService, StorageKey } from './storage-service';
 })
 export class OptionsService {
 
-  private readonly MINIMUM_NOTIFICATION_DURATION = 100;
+  private facingMode: string;
+  private picsPerRound: number;
+  private notificationDuration: number;
+  
+  private readonly MINIMUM_NOTIFICATION_DURATION = 400;
   private readonly MAXIMUM_NOTIFICATION_DURATION = 2000;
   private readonly MINIMUM_PICS_PER_ROUND = 1;
   public readonly MAXIMUM_PICS_PER_ROUND = 16;
 
+  private readonly settingBoundsByStorageKey : { [key in StorageKey]: {Min: number, Max:number}} = {
+    [StorageKey.NotificationDuration]: { Min: this.MINIMUM_NOTIFICATION_DURATION, Max: this.MAXIMUM_NOTIFICATION_DURATION },
+    [StorageKey.PicsPerRound]:  { Min: this.MINIMUM_PICS_PER_ROUND, Max: this.MAXIMUM_PICS_PER_ROUND },
+  };
+
+  private readonly settingDefaultsByStorageKey : { [key in StorageKey]: number } = {
+    [StorageKey.NotificationDuration]: environment.defaultNotificationDuration,
+    [StorageKey.PicsPerRound]: environment.defaultPicsPerRound
+  };
 
   constructor(private loggingService: LoggingService, private storageService: StorageService) {
     this.facingMode = environment.defaultFacingMode;
-    this.picsPerRound = this.getInitialPicsPerRound();
-    this.notificationDuration = this.getInitialNotificationDuration();
+    this.picsPerRound = this.getInitialNumericSetting(StorageKey.PicsPerRound);
+    this.notificationDuration = this.getInitialNumericSetting(StorageKey.NotificationDuration);
   }
-
-  private facingMode: string;
-  private picsPerRound: number;
-  private notificationDuration: number;
 
   readonly picColorStates = [
     { Label: 'Red', Value: new Color(255, 0, 0), Enabled: true },
@@ -39,67 +48,22 @@ export class OptionsService {
     { Label: 'Purple', Value: new Color(128, 0, 128), Enabled: true },
   ];
 
-  private getInitialNotificationDuration() : number {
-    const localStorageNotificationDuration = this.storageService.get(StorageKey[StorageKey.NotificationDuration]);
-    if (localStorageNotificationDuration) {
-      var notificationDuration = +localStorageNotificationDuration;
-      if (notificationDuration >= this.MINIMUM_NOTIFICATION_DURATION &&
-          notificationDuration <= this.MAXIMUM_NOTIFICATION_DURATION) {
-            this.loggingService.log(`Local storage notification duration loaded (${notificationDuration})`);            
-            return notificationDuration; // We've loaded a valid notificationDuration from local storage, we're done
-      }
-      else {
-        this.loggingService.log(`Invalid notification duration loaded (${notificationDuration})`);
-      }
-    }
-
-    // No luck in local storage
-    this.loggingService.log(`Default notification duration loaded (${environment.defaultNotificationDuration})`);
-    return environment.defaultNotificationDuration;
-  }
-
-  private getInitialPicsPerRound() : number {
-    const localStoragePicsPerRound = this.storageService.get(StorageKey[StorageKey.PicsPerRound]);
-    if (localStoragePicsPerRound) {
-      this.loggingService.log(`Local storage pics per round loaded (${localStoragePicsPerRound})`);
-      const picsPerRound = +localStoragePicsPerRound;
-      const validationResult = this.inBounds(picsPerRound, this.MINIMUM_PICS_PER_ROUND, this.MAXIMUM_PICS_PER_ROUND);
-      if ( validationResult.valid) {
-        this.loggingService.log(`Local storage pics per round validated (${picsPerRound})`);
-        return picsPerRound; // We've loaded a valid picsPerRound from local storage, we're done
-      } else {
-        this.loggingService.log(`Local storage pics per round invalid. (${picsPerRound})`);
-      }
-      if (validationResult.errorMessage) {
-        this.loggingService.log(`Invalid pics per round loaded (${picsPerRound})`);
-      }
-    }
-
-    // Either no PicsPerRound was found in local storage, or the value which was found is invalid
-    this.loggingService.log(`Default pics per round loaded (${environment.defaultPicsPerRound})`);
-    return environment.defaultPicsPerRound;
-  }
-
-  private getSettingsBoundsByStorageKey() : { [key: string]: {Min: number, Max:number}} {
-    const lookup: { [key: string]: {Min: number, Max:number}} = {};
-    lookup[StorageKey[StorageKey.NotificationDuration]] = { Min: this.MINIMUM_NOTIFICATION_DURATION, Max: this.MAXIMUM_NOTIFICATION_DURATION};
-    return lookup;
-  }
-
-  private settingsByStorageKey : { [key: string]: {Min: number, Max:number}} = {
-    'NotificationDuration' : { Min: 4, Max: 400 },
-    'PicsPerRound' : { Min: 2, Max: 10 }
-  };
-
-  private getInitialNumericSetting(storageKey: StorageKey) {
-    const localStorageValue = this.storageService.get(StorageKey[storageKey]);
+  private getInitialNumericSetting(storageKey: StorageKey): number {
+    const stringKey = StorageKey[storageKey];
+    const localStorageValue = this.storageService.get(stringKey);
     if (localStorageValue) {
-      this.loggingService.log(`Local storage ${StorageKey[storageKey]} loaded ${localStorageValue}`);
+      this.loggingService.log(`Local storage ${stringKey} loaded ${localStorageValue}`);
       const value = +localStorageValue;
-      // const validationResult = this.inBounds(value, )
+      const settingBounds = this.settingBoundsByStorageKey[storageKey];
+      const validationResult = this.inBounds(value, settingBounds.Min, settingBounds.Max);
+      if (validationResult.valid) {
+        return value;
+      }
     }
+    // Either failed to find the setting in local storage, or the value found in local storage didn't pass
+    // bounds checking validation. Return default.
+    return this.settingDefaultsByStorageKey[storageKey];
   }
-
 
   private inBounds(value: number, minimum: number, maximum: number) : { errorMessage?: string, valid:boolean } {
     const result = { valid: false, errorMessage: ''};
