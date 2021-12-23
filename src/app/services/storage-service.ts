@@ -11,15 +11,15 @@ import { Color } from '../interfaces/color';
 })
 export class StorageService {
 
-    get(key: string) : string | null {
-        return window.localStorage.getItem(key);
+    get(key: StorageKey) : string | null {
+        return window.localStorage.getItem(StorageKey[key]);
     }
-    set(key: string, value: string | number ) : void {
+    set(key: StorageKey, value: string | number ) : void {
         if (typeof value === "number")
         {
             value = String(value);
         }
-        window.localStorage.setItem(key, value);
+        window.localStorage.setItem(StorageKey[key], value);
     }
 }
 

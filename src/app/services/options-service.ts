@@ -13,7 +13,7 @@ export class OptionsService {
   private facingMode: string;
   private picsPerRound: number;
   private notificationDuration: number;
-  
+
   private readonly MINIMUM_NOTIFICATION_DURATION = 400;
   private readonly MAXIMUM_NOTIFICATION_DURATION = 2000;
   private readonly MINIMUM_PICS_PER_ROUND = 1;
@@ -49,14 +49,12 @@ export class OptionsService {
   ];
 
   private getInitialNumericSetting(storageKey: StorageKey): number {
-    const stringKey = StorageKey[storageKey];
-    const localStorageValue = this.storageService.get(stringKey);
+    const localStorageValue = this.storageService.get(storageKey);
     if (localStorageValue) {
-      this.loggingService.log(`Local storage ${stringKey} loaded ${localStorageValue}`);
+      this.loggingService.log(`Local storage ${StorageKey[storageKey]} loaded ${localStorageValue}`);
       const value = +localStorageValue;
       const settingBounds = this.settingBoundsByStorageKey[storageKey];
-      const validationResult = this.inBounds(value, settingBounds.Min, settingBounds.Max);
-      if (validationResult.valid) {
+      if (this.inBounds(value, settingBounds.Min, settingBounds.Max).valid) {
         return value;
       }
     }
@@ -93,7 +91,7 @@ export class OptionsService {
   }
   setPicsPerRound(picsPerRound: number) : void {
     this.picsPerRound = picsPerRound;
-    this.storageService.set(StorageKey[StorageKey.PicsPerRound], picsPerRound);
+    this.storageService.set(StorageKey.PicsPerRound, picsPerRound);
     this.loggingService.log(`Pics per Round (${picsPerRound}) stored.`);
   }
 
@@ -102,7 +100,7 @@ export class OptionsService {
   }
   setNotificationDuration(notificationDuration: number) : void {
     this.notificationDuration = notificationDuration;
-    this.storageService.set(StorageKey[StorageKey.NotificationDuration], notificationDuration);
+    this.storageService.set(StorageKey.NotificationDuration, notificationDuration);
     this.loggingService.log(`NotificationDuration (${notificationDuration}) stored.`);
   }
 }
